@@ -454,17 +454,23 @@ alert("Error");
 }
 
 function SaveTaxForm(){
-  let inputFlag = 0;
-  let TaxVal = document.getElementById('taxVal').value;
-  let TaxNameVal = document.getElementById('taxName').value;
+  var inputFlag = 0;
+  var TaxVal = document.getElementById('taxVal').value;
+  var TaxNameVal = document.getElementById('taxName').value;
 
   if(TaxNameVal === ""){
     inputFlag = 1;
-  }else if (TaxVal === "") {
+    // document.getElementById("taxName").style.backgroundColor = "red"; 
+
+  }else if (TaxVal ==="") {
+    // document.getElementById("taxVal").style.backgroundColor = "red"; 
+
     inputFlag = 1;
   }
-  if (inputFlag < 1) {
+  if (inputFlag != 0) {
 
+  // }
+  // else{
     $.ajax({
       url:'../src/TaxSettingFormSave.php',
       type:'POST',
