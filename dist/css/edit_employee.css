@@ -1,0 +1,123 @@
+.blank_row
+{
+  height: 40px !important;
+  background-color: #FFFFFF;
+}
+table.table td:nth-child(6){
+   max-width: 100px;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}
+table.table td:nth-child(6):hover{
+  overflow: visible;
+  white-space: normal;
+  height:auto;
+}
+.circle {
+  background: gray;
+  border-radius: 50px;
+  color: white;
+  height: 30px;
+  /* font-weight: bold; */
+  width: 30px;
+  display: table;
+  margin:  auto;
+}
+.circle p {
+  vertical-align: middle;
+  display: table-cell;
+}
+/* select#scountry2 {
+   border:none;
+   /* outline:0px; */
+/* }  */
+.select2 {
+  /* color: rgba(0,0,0,0); */
+     outline-color: gray;
+}
+
+/* #datble th {
+background-color: #00a65a;
+color: white;
+} */
+
+.nav-tabs-colors {
+background-color: #ececef;
+}
+.edit-app-tabs {
+background-color: #ececef;
+}
+#edit-app-tab {
+background-color: #ececef;
+}
+.bs-example{
+margin: 20px;
+}
+tr.border_bottom td {
+border-bottom:1px solid gray;
+
+}
+#fnameemp:focus, #fnameemp:active {
+  color: green;
+caret-color: red;
+}
+#lnameemp:focus, #lnameemp:active {
+  color: green;
+caret-color: red;
+}
+#ePan:focus,#ePan:active{
+  color: green;
+  caret-color: red;
+}
+#bdate:focus, #bdate:active {
+  color: green;
+caret-color: red;
+}
+#pincodeemp:focus, #pincodeemp:active {
+  color: green;
+caret-color: red;
+}
+#emailidemp:focus, #emailidemp:active {
+  color: green;
+caret-color: red;
+}
+#contactnoemp:focus, #contactnoemp:active {
+  color: green;
+caret-color: red;
+}
+#addressemp:focus, #addressemp:active {
+  color: green;
+caret-color: red;
+}
+
+#joindate:focus, #joindate:active {
+  color: green;
+caret-color: red;
+}
+
+
+.label1{
+width:20%;
+margin-top:10px;
+}
+.info{
+width:70%;
+margin-top:10px;
+}
+.editbtn{
+width:30%;margin-top:10px;
+}
+.removeborder{
+  border: none;
+ background-color: transparent;
+}
+
+.img-responsive  img{
+    width: 150px;
+    height:  100px;
+}
+.img-responsive img1{
+  width: 150px;
+  height:  100px;
+}

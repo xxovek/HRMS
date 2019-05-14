@@ -1,0 +1,5 @@
+[24-Mar-2019 13:34:14 UTC] PHP Warning:  Constants may only evaluate to scalar values in /home/xxovek/public_html/hrms/Public_html/pdf.php on line 49
+[24-Mar-2019 13:35:25 UTC] PHP Warning:  Constants may only evaluate to scalar values in /home/xxovek/public_html/hrms/Public_html/pdf.php on line 49
+[24-Mar-2019 13:36:00 UTC] PHP Warning:  Constants may only evaluate to scalar values in /home/xxovek/public_html/hrms/Public_html/pdf.php on line 49
+[24-Mar-2019 13:37:27 UTC] PHP Warning:  Constants may only evaluate to scalar values in /home/xxovek/public_html/hrms/Public_html/pdf.php on line 49
+[03-Apr-2019 05:37:05 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/xxovek/public_html/hrms/Public_html/displayAttendanceemp.php:2) in /home/xxovek/public_html/hrms/Public_html/displayAttendanceemp.php on line 3
