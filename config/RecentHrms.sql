@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 08, 2019 at 11:58 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.3
+-- Generation Time: May 15, 2019 at 08:39 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.0.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -48427,32 +48427,7 @@ CREATE TABLE `CompanyDetails` (
 
 INSERT INTO `CompanyDetails` (`c_id`, `userId`, `companyname`, `contactperson`, `address`, `country`, `City`, `State`, `postalcode`, `email`, `contactnumber`, `fax`, `websiteurl`, `financial_year`, `created_at`, `updated_at`) VALUES
 (1, 1, 'Xxovek Web Solutions', 'Vikas Pawar', 'shivajinagar,pune.', 'India', 'Ara', 'Jharkhand', '345678', 'xxovek@gmail.com', '8765434567', '2567898', 'www.xxovek.com', '', '2019-03-07 12:34:42', '2019-03-08 06:59:05'),
-(4, 20, 'SUNLINE Systems Pvt. Lmt.', 'Arpit Ranka', 'Flat-201,Hemraj Appartment,Himnagari Coloney,HimNagar,WestSide.', 'India', 'Navi Mumbai', 'Maharashtra', '400002', 'sunline@gmail.com', '8623064696', '5432345', 'www.sunline.com', '04/01/2019 - 03/31/2020', '2019-03-14 06:45:44', '2019-04-28 07:58:17'),
-(5, 21, 'KK IT PVT LTD', 'pranav kapse', 'pune', 'India', 'Dhule', 'Maharashtra', '411005', 'kk@gmail.com', '9766695099', 'kk', 'www.xxovek.com', '01/04/2019 - 01/05/2020', '2019-05-08 07:27:54', '2019-05-08 09:11:08');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ConfigSettings`
---
-
-CREATE TABLE `ConfigSettings` (
-  `id` int(11) NOT NULL,
-  `UserId` int(11) NOT NULL,
-  `PFPercent` int(11) NOT NULL,
-  `SalComponentId` int(11) NOT NULL,
-  `PT` int(11) DEFAULT NULL,
-  `WorkHours` varchar(11) DEFAULT NULL,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `ConfigSettings`
---
-
-INSERT INTO `ConfigSettings` (`id`, `UserId`, `PFPercent`, `SalComponentId`, `PT`, `WorkHours`, `created_at`, `updated_at`) VALUES
-(4, 20, 20, 20, 200, NULL, '2019-05-08 15:08:34', '2019-05-08 15:08:34');
+(4, 20, 'SUNLINE Systems Pvt. Lmt.', 'Arpit Ranka', 'Flat-201,Hemraj Appartment,Himnagari Coloney,HimNagar,WestSide.', 'India', 'Navi Mumbai', 'Maharashtra', '400002', 'sunline@gmail.com', '8623064696', '5432345', 'www.sunline.com', '04/01/2019 - 03/31/2020', '2019-03-14 06:45:44', '2019-04-28 07:58:17');
 
 -- --------------------------------------------------------
 
@@ -48864,7 +48839,8 @@ INSERT INTO `EmployeeAttendance` (`EmpAtteId`, `EmpId`, `Day`, `TimeIn`, `TimeOu
 (50, 28, '2019-04-18', '11:45:41', NULL, NULL, '2019-04-18 06:15:41', '2019-04-18 06:15:41'),
 (51, 28, '2019-04-21', '15:57:04', NULL, NULL, '2019-04-21 10:27:04', '2019-04-21 10:27:04'),
 (52, 28, '2019-04-28', '11:57:44', NULL, NULL, '2019-04-28 06:27:44', '2019-04-28 06:27:44'),
-(53, 28, '2019-05-04', '12:09:04', NULL, NULL, '2019-05-04 06:39:04', '2019-05-04 06:39:04');
+(53, 28, '2019-05-03', '11:05:17', '11:12:06', 0.10, '2019-05-03 05:35:17', '2019-05-03 05:42:06'),
+(54, 48, '2019-05-03', '17:32:26', NULL, NULL, '2019-05-03 12:02:26', '2019-05-03 12:02:26');
 
 -- --------------------------------------------------------
 
@@ -48879,7 +48855,7 @@ CREATE TABLE `EmployeeBankDetails` (
   `BranchName` varchar(100) DEFAULT NULL,
   `AccountName` varchar(100) DEFAULT NULL,
   `AccountNumber` varchar(50) DEFAULT NULL,
-  `IFSC` varchar(30) NOT NULL,
+  `IFSC` varchar(20) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -48893,7 +48869,8 @@ INSERT INTO `EmployeeBankDetails` (`BankDetailsId`, `EmpId`, `BankName`, `Branch
 (5, 4, 'SBI', 'Aundh', 'Akash Abhijeet Parmar', '12345676543', '10230', '2019-03-06 13:09:13', '2019-03-06 13:09:13'),
 (6, 21, 'SBI', 'Shivaji Nagar Pune', 'NArendra Rajendra Modi', '12345676543', '10400', '2019-03-07 09:42:39', '2019-03-07 09:42:39'),
 (7, 28, 'SBI', 'Navi Mumbai', 'Suraj Ravi Mishra', '12345678987', '10399', '2019-03-14 08:38:25', '2019-03-14 08:38:25'),
-(8, 29, 'SBI', 'Aundh', 'Sonakshi Ram Kapoor', '3234567654', '10299', '2019-03-23 11:13:15', '2019-03-23 11:13:15');
+(8, 29, 'SBI', 'Aundh', 'Sonakshi Ram Kapoor', '3234567654', 'Sbi-10299', '2019-03-23 11:13:15', '2019-05-03 10:39:58'),
+(9, 46, 'SBI', 'Aundh branch', 'Yogesh Sameer Raut', '78654565678765456', 'SBI-023412', '2019-04-30 11:22:36', '2019-04-30 11:22:58');
 
 -- --------------------------------------------------------
 
@@ -48923,7 +48900,12 @@ INSERT INTO `EmployeeDepartments` (`EmpDeptId`, `EmpId`, `DeptId`, `created_at`,
 (17, 25, 15, '2019-03-06 09:09:17', '2019-03-06 09:09:17'),
 (20, 28, 23, '2019-03-14 07:23:47', '2019-03-23 10:29:28'),
 (21, 29, 23, '2019-03-14 07:27:09', '2019-03-14 07:27:09'),
-(22, 30, 19, '2019-03-14 07:30:10', '2019-03-14 07:30:10');
+(22, 30, 19, '2019-03-14 07:30:10', '2019-03-14 07:30:10'),
+(23, 31, 23, '2019-04-30 07:04:35', '2019-04-30 07:04:35'),
+(24, 32, 18, '2019-04-30 07:19:54', '2019-04-30 07:19:54'),
+(25, 46, 20, '2019-04-30 09:28:25', '2019-04-30 09:28:25'),
+(26, 47, 22, '2019-04-30 10:01:55', '2019-04-30 10:01:55'),
+(27, 48, 20, '2019-05-03 11:32:38', '2019-05-03 11:32:38');
 
 -- --------------------------------------------------------
 
@@ -48953,7 +48935,12 @@ INSERT INTO `EmployeeDesignations` (`EmpDesigId`, `EmpId`, `DesigId`, `created_a
 (17, 25, 12, '2019-03-06 09:09:17', '2019-03-06 09:09:17'),
 (20, 28, 23, '2019-03-14 07:23:47', '2019-03-23 10:29:28'),
 (21, 29, 25, '2019-03-14 07:27:09', '2019-03-14 07:27:09'),
-(22, 30, 28, '2019-03-14 07:30:10', '2019-03-14 07:30:10');
+(22, 30, 28, '2019-03-14 07:30:10', '2019-03-14 07:30:10'),
+(23, 31, 24, '2019-04-30 07:04:35', '2019-04-30 07:04:35'),
+(24, 32, 17, '2019-04-30 07:19:54', '2019-04-30 07:19:54'),
+(25, 46, 18, '2019-04-30 09:28:25', '2019-04-30 09:28:25'),
+(26, 47, 19, '2019-04-30 10:01:55', '2019-04-30 10:01:55'),
+(27, 48, 19, '2019-05-03 11:32:38', '2019-05-03 11:32:38');
 
 -- --------------------------------------------------------
 
@@ -48981,8 +48968,8 @@ INSERT INTO `EmployeeEducationDetails` (`EduId`, `EmpId`, `Empdegree`, `speciali
 (129, 5, 'B.E.', 'Electronic', '2010', 'Pune University', '60', '2019-02-21 08:10:49', '2019-02-21 11:04:02'),
 (137, 6, 'ujjhg', 'ghh', '2017', 'hgjhjh', '78', '2019-02-21 10:18:12', '2019-02-21 10:18:12'),
 (142, 4, 'MCS', 'CS', '2017', 'pune', '60', '2019-02-21 11:01:59', '2019-02-21 11:01:59'),
-(143, 28, 'Mcs', 'computer', '2018', 'pune', '6.5', '2019-05-04 10:23:46', '2019-05-04 10:23:46'),
-(144, 28, 'BSC', 'computer', '2015', 'pune', '5.6', '2019-05-04 10:24:47', '2019-05-04 10:24:47');
+(143, 29, 'ME', 'Mechanical', '2017', 'pune', '8.5', '2019-05-03 06:29:15', '2019-05-03 06:29:15'),
+(144, 29, 'BE', 'mechanical', '2015', 'pune', '7.5', '2019-05-03 06:32:52', '2019-05-03 06:32:52');
 
 -- --------------------------------------------------------
 
@@ -49010,8 +48997,8 @@ INSERT INTO `EmployeeExperienceDetails` (`ExpId`, `EmpId`, `EmployerName`, `NoOf
 (77, 4, 'Xxovek web solutions', 2, 0, '2019-02-22 09:05:15', '2019-02-22 09:05:15'),
 (78, 4, 'Josh Software', 4, 3, '2019-02-22 09:05:30', '2019-02-22 09:05:30'),
 (80, 4, 'Josh Software PVT Ltd', 1, 3, '2019-02-22 09:30:28', '2019-02-22 09:30:28'),
-(81, 28, 'MCS', 3, 2, '2019-05-04 10:20:00', '2019-05-04 10:20:00'),
-(82, 28, 'BSc', 3, 2, '2019-05-04 10:21:23', '2019-05-04 10:21:23');
+(81, 29, 'Xxovek Web Solutions', 2, 1, '2019-05-03 06:42:17', '2019-05-03 06:42:17'),
+(82, 29, 'Josh Software PVT Ltd', 2, 1, '2019-05-03 06:45:02', '2019-05-03 06:45:02');
 
 -- --------------------------------------------------------
 
@@ -49083,7 +49070,8 @@ INSERT INTO `EmployeeLeaves` (`EmpLeaveId`, `EmpId`, `LeaveId`, `fromDate`, `upt
 (8, 28, 35, '2019-01-10', '2019-01-11', 2, 'Approved', 'Health isuue', '2019-03-16 05:48:31', '2019-03-16 13:05:32'),
 (9, 29, 36, '2019-03-22', '2019-03-29', 8, 'New', 'health issue.', '2019-03-16 05:56:10', '2019-03-16 05:56:10'),
 (10, 29, 36, '2019-04-04', '2019-04-04', 1, 'New', 'nosjlsk kjkds', '2019-03-16 05:57:45', '2019-03-16 05:57:45'),
-(11, 28, 35, '2019-04-03', '2019-04-05', 3, 'Rejected', 'casual', '2019-03-16 11:31:02', '2019-03-16 11:31:37');
+(11, 28, 35, '2019-04-03', '2019-04-05', 3, 'Rejected', 'casual', '2019-03-16 11:31:02', '2019-03-16 11:31:37'),
+(12, 46, 36, '2019-05-14', '2019-05-25', 12, 'New', 'Sick', '2019-05-03 12:07:10', '2019-05-03 12:07:10');
 
 -- --------------------------------------------------------
 
@@ -49113,7 +49101,7 @@ INSERT INTO `EmployeePFDetails` (`id`, `EmpId`, `pfnumber`, `UAENumber`, `create
 (6, 4, '8', '8', '2019-03-07 13:39:56', '2019-03-07 13:39:56'),
 (7, 16, '7', '234567', '2019-03-07 13:56:54', '2019-03-07 13:56:54'),
 (8, 28, '32098', 'UAE-2019', '2019-03-14 14:08:53', '2019-03-14 14:08:53'),
-(9, 29, '54rtyy', '456556gfff', '2019-03-23 16:43:32', '2019-03-23 16:43:32');
+(9, 29, '54rtyyyygg2345654', 'Dfg456556', '2019-03-23 16:43:32', '2019-03-23 16:43:32');
 
 -- --------------------------------------------------------
 
@@ -49154,9 +49142,14 @@ INSERT INTO `Employees` (`EmpId`, `UserId`, `EmpName`, `gender`, `DOB`, `Address
 (16, 1, 'Prakash -Raj', 'Male', '2019-03-13', 'dfgfghhh', 'Albania', 'Delvine', 'Delvine', '987667', 'prgp@gmail.com', '9923394525', 'defaultuserimage.png', '12345', '2019-03-07', 'yogti7898a', '2019-03-06 07:47:27', '2019-03-06 07:47:27'),
 (21, 1, 'Narendra-Modi', 'Male', '2019-03-01', 'sdfdgfhfg', 'Albania', 'Bulqize', 'Bulqize', '654456', 'nm@gmail.com', '9923396789', 'defaultuserimage.png', '12345', '2019-03-13', 'ASDFG1234A', '2019-03-06 08:19:49', '2019-03-06 08:19:49'),
 (25, 1, 'ashok-patil', 'Male', '2019-03-13', 'aundh,pune.', 'Algeria', 'Algiers', 'Kouba', '876543', 'ashok1@gmail.com', '9923395678', 'defaultuserimage.png', '12345', '2019-03-07', 'sonal2345A', '2019-03-06 09:09:17', '2019-03-06 09:09:17'),
-(28, 20, 'Suraj-Mishra', 'Male', '1986-02-04', 'F-201,DENIK APPARTMENT,   \r\nDak Bhavan\r\n   Parliament Street\r\n   NEW MUMBAI 400003\r\n   INDIA', 'India', 'Maharashtra', 'Navi Mumbai', '400003', 'suraj@gmail.com', '8765432345', '20-28Emp.png', '12345', '2018-01-01', 'SURAJ2345A', '2019-03-14 07:23:47', '2019-05-08 07:36:29'),
-(29, 20, 'Sonakshi-Kapoor', 'Female', '1990-06-13', 'F-102,Gujar Recidency,opposite AIMS hospital,Aundh Goan,pune', 'India', 'Maharashtra', 'Pune', '411007', 'ksona@gmail.com', '7654567876', 'defaultuserimage.png', '12345', '2018-01-01', 'SONAK2345A', '2019-03-14 07:27:08', '2019-03-14 07:27:08'),
-(30, 20, 'Arpit-Ranka', 'Male', '1985-01-23', 'Mr. I. K. Taneja\r\n   Flat No. 100\r\n   Triveni Apartments\r\n   Pitam Pura', 'India', 'Maharashtra', 'Chinchwad', '411006', 'arpit@gmail.com', '8765678987', 'defaultuserimage.png', '12345', '2018-01-09', 'arpit4565a', '2019-03-14 07:30:10', '2019-03-14 07:30:10');
+(28, 20, 'Suraj-Mishra', 'Male', '1986-02-04', 'F-201,DENIK APPARTMENT,   \r\nDak Bhavan\r\n   Parliament Street\r\n   NEW MUMBAI 400003\r\n   INDIA', 'India', 'Maharashtra', 'Navi Mumbai', '400003', 'suraj@gmail.com', '8765432345', '20-28Emp.jpg', '12345', '2018-01-01', 'SURAJ2345A', '2019-03-14 07:23:47', '2019-04-30 11:24:23'),
+(29, 20, 'Sonakshi-Kapoor', 'Female', '1990-06-13', 'F-102,Gujar Recidency,opposite AIMS hospital,Aundh Goan,pune ', 'India', 'Maharashtra', 'Pune', '411007', 'ksona@gmail.com', '7654567876 ', '20-29Emp.jpg', '12345', '2018-01-01', 'SONAK2345A', '2019-03-14 07:27:08', '2019-05-03 10:41:13'),
+(30, 20, 'Arpit-Ranka', 'Male', '1985-01-23', 'Mr. I. K. Taneja\r\n   Flat No. 100\r\n   Triveni Apartments\r\n   Pitam Pura', 'India', 'Maharashtra', 'Chinchwad', '411006', 'arpit@gmail.com', '8765678987', 'defaultuserimage.png', '12345', '2018-01-09', 'arpit4565a', '2019-03-14 07:30:10', '2019-03-14 07:30:10'),
+(31, 20, 'suresh-Raina', 'Male', '2019-04-09', 'fghdjgh,hjdf,kdfj,kdhjk.', 'India', 'Maharashtra', 'Navi Mumbai', '400002', 'suresh@gmail.com', '7558611277', '20-31Emp.jpg', '12345', '2018-01-01', 'ASDFG4567A', '2019-04-30 07:04:35', '2019-04-30 07:13:27'),
+(32, 20, 'Virat-Kohli', 'Male', '1989-01-01', 'fgfg,ghjh,ghj,gjj', 'India', 'Maharashtra', 'Ahmednagar', '411005', 'vk@gmail.com', '8623064696', '20-32Emp.png', '12345', '2017-01-25', 'Asdfg1234t', '2019-04-30 07:19:54', '2019-04-30 07:30:29'),
+(46, 20, 'yogesh-raut', 'Male', '2019-04-25', 'daund', 'India', 'Maharashtra', 'Ahmednagar', '876567', 'yog@gmail.com', '9923394523', '20-46Emp.jpg', '12345', '2019-04-24', 'asdfg5643h', '2019-04-30 09:28:25', '2019-04-30 10:13:23'),
+(47, 20, 'anjali-bhagwat', 'Male', '2019-04-17', 'fghghg,hgjgghg', 'Austria', 'Carinthia', 'Poggersdorf', '876545', 'anjali@gmail.com', '9923356756', '20-47Emp.jpg', '12345', '2019-04-24', 'ytrew4534r', '2019-04-30 10:01:55', '2019-04-30 10:01:55'),
+(48, 20, 'Ganesh-Sagare', 'Male', '2019-05-01', 'Ap. Kurkumbh taluka daund dist pune.', 'India', 'Maharashtra', 'Pune', '411002', 'gs@gmail.com', '7558611277', '20-48Emp.jpg', '12345', '2019-05-16', 'Sonal4321a', '2019-05-03 11:32:38', '2019-05-03 11:49:05');
 
 -- --------------------------------------------------------
 
@@ -49371,17 +49364,49 @@ INSERT INTO `EmployeeSalaryPayslip` (`PayslipId`, `EmpId`, `SalaryHeadId`, `Amou
 (1151, 28, 28, 133.33, '2019-04-01', '2019-04-28 06:27:59', '2019-04-28 06:27:59'),
 (1152, 28, 30, 266.67, '2019-04-01', '2019-04-28 06:27:59', '2019-04-28 06:27:59'),
 (1153, 28, 29, 26.67, '2019-04-01', '2019-04-28 06:27:59', '2019-04-28 06:27:59'),
-(1154, 28, 20, 13333.33, '2019-01-01', '2019-04-28 08:46:51', '2019-04-28 08:46:51'),
-(1155, 28, 21, 2000.00, '2019-01-01', '2019-04-28 08:46:51', '2019-04-28 08:46:51'),
-(1156, 28, 22, 1333.33, '2019-01-01', '2019-04-28 08:46:51', '2019-04-28 08:46:51'),
-(1157, 28, 23, 1000.00, '2019-01-01', '2019-04-28 08:46:51', '2019-04-28 08:46:51'),
-(1158, 28, 24, 1366.67, '2019-01-01', '2019-04-28 08:46:51', '2019-04-28 08:46:51'),
-(1159, 28, 25, 3333.33, '2019-01-01', '2019-04-28 08:46:51', '2019-04-28 08:46:51'),
-(1160, 28, 26, 333.33, '2019-01-01', '2019-04-28 08:46:51', '2019-04-28 08:46:51'),
-(1161, 28, 27, 2000.00, '2019-01-01', '2019-04-28 08:46:51', '2019-04-28 08:46:51'),
-(1162, 28, 28, 666.67, '2019-01-01', '2019-04-28 08:46:51', '2019-04-28 08:46:51'),
-(1163, 28, 30, 1333.33, '2019-01-01', '2019-04-28 08:46:51', '2019-04-28 08:46:51'),
-(1164, 28, 29, 133.33, '2019-01-01', '2019-04-28 08:46:51', '2019-04-28 08:46:51');
+(1197, 28, 20, 13333.33, '2019-01-01', '2019-05-03 11:58:12', '2019-05-03 11:58:12'),
+(1198, 28, 21, 2000.00, '2019-01-01', '2019-05-03 11:58:12', '2019-05-03 11:58:12'),
+(1199, 28, 22, 1333.33, '2019-01-01', '2019-05-03 11:58:12', '2019-05-03 11:58:12'),
+(1200, 28, 23, 1000.00, '2019-01-01', '2019-05-03 11:58:12', '2019-05-03 11:58:12'),
+(1201, 28, 24, 1366.67, '2019-01-01', '2019-05-03 11:58:12', '2019-05-03 11:58:12'),
+(1202, 28, 25, 3333.33, '2019-01-01', '2019-05-03 11:58:13', '2019-05-03 11:58:13'),
+(1203, 28, 26, 333.33, '2019-01-01', '2019-05-03 11:58:13', '2019-05-03 11:58:13'),
+(1204, 28, 27, 2000.00, '2019-01-01', '2019-05-03 11:58:13', '2019-05-03 11:58:13'),
+(1205, 28, 28, 666.67, '2019-01-01', '2019-05-03 11:58:13', '2019-05-03 11:58:13'),
+(1206, 28, 30, 1333.33, '2019-01-01', '2019-05-03 11:58:13', '2019-05-03 11:58:13'),
+(1207, 28, 29, 133.33, '2019-01-01', '2019-05-03 11:58:13', '2019-05-03 11:58:13'),
+(1219, 28, 20, 666.67, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1220, 28, 21, 100.00, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1221, 28, 22, 66.67, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1222, 28, 23, 50.00, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1223, 28, 24, 68.33, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1224, 28, 25, 166.67, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1225, 28, 26, 16.67, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1226, 28, 27, 100.00, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1227, 28, 28, 33.33, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1228, 28, 30, 66.67, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1229, 28, 29, 6.67, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1230, 29, 20, 0.00, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1231, 29, 21, 0.00, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1232, 29, 22, 0.00, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1233, 29, 23, 0.00, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1234, 29, 24, 0.00, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1235, 29, 25, 0.00, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1236, 29, 26, 0.00, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1237, 29, 27, 0.00, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1238, 29, 28, 0.00, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1239, 29, 29, 0.00, '2019-05-01', '2019-05-03 12:06:09', '2019-05-03 12:06:09'),
+(1240, 29, 30, 0.00, '2019-05-01', '2019-05-03 12:06:10', '2019-05-03 12:06:10'),
+(1241, 30, 20, 0.00, '2019-05-01', '2019-05-03 12:06:10', '2019-05-03 12:06:10'),
+(1242, 30, 21, 0.00, '2019-05-01', '2019-05-03 12:06:10', '2019-05-03 12:06:10'),
+(1243, 30, 22, 0.00, '2019-05-01', '2019-05-03 12:06:10', '2019-05-03 12:06:10'),
+(1244, 30, 23, 0.00, '2019-05-01', '2019-05-03 12:06:10', '2019-05-03 12:06:10'),
+(1245, 30, 25, 0.00, '2019-05-01', '2019-05-03 12:06:10', '2019-05-03 12:06:10'),
+(1246, 30, 26, 0.00, '2019-05-01', '2019-05-03 12:06:10', '2019-05-03 12:06:10'),
+(1247, 30, 27, 0.00, '2019-05-01', '2019-05-03 12:06:10', '2019-05-03 12:06:10'),
+(1248, 30, 28, 0.00, '2019-05-01', '2019-05-03 12:06:10', '2019-05-03 12:06:10'),
+(1249, 30, 29, 0.00, '2019-05-01', '2019-05-03 12:06:10', '2019-05-03 12:06:10'),
+(1250, 30, 30, 0.00, '2019-05-01', '2019-05-03 12:06:10', '2019-05-03 12:06:10');
 
 -- --------------------------------------------------------
 
@@ -49470,7 +49495,10 @@ INSERT INTO `EmployeeSalaryStructure` (`EmpSalStrucId`, `EmpId`, `SalaryHeadId`,
 (126, 28, 27, 3000.00, '2018-03-15', '2020-03-15', '2019-04-13 10:55:28', '2019-04-13 10:55:28'),
 (127, 28, 28, 1000.00, '2018-03-15', '2020-03-15', '2019-04-13 10:55:28', '2019-04-13 10:55:28'),
 (128, 28, 30, 2000.00, '2018-03-15', '2020-03-15', '2019-04-13 10:55:28', '2019-04-13 10:55:28'),
-(129, 28, 29, 200.00, '2018-03-15', '2020-03-15', '2019-04-13 10:55:28', '2019-04-13 10:55:28');
+(129, 28, 29, 200.00, '2018-03-15', '2020-03-15', '2019-04-13 10:55:28', '2019-04-13 10:55:28'),
+(130, 48, 20, 10000.00, '2019-05-01', '2020-05-31', '2019-05-03 12:30:03', '2019-05-03 12:30:03'),
+(131, 48, 21, 5000.00, '2019-05-01', '2020-05-31', '2019-05-03 12:30:03', '2019-05-03 12:30:03'),
+(132, 48, 22, 500.00, '2019-05-01', '2020-05-31', '2019-05-03 12:30:03', '2019-05-03 12:30:03');
 
 -- --------------------------------------------------------
 
@@ -49502,13 +49530,14 @@ INSERT INTO `EmployeeSkillsDetails` (`SkillId`, `EmpId`, `SkillName`, `created_a
 (32, 6, 'PHP', '2019-02-21 09:56:55', '2019-02-21 09:56:55'),
 (33, 6, 'php', '2019-02-21 09:57:03', '2019-02-21 09:57:03'),
 (35, 4, 'HTML5', '2019-02-22 09:06:49', '2019-02-22 09:06:58'),
-(36, 28, 'HTML', '2019-05-04 10:15:45', '2019-05-04 10:15:45'),
-(37, 28, 'CSS', '2019-05-04 10:15:54', '2019-05-04 10:15:54'),
-(38, 28, 'PHP', '2019-05-04 10:16:05', '2019-05-04 10:16:05'),
-(39, 28, 'C++', '2019-05-04 10:16:38', '2019-05-04 10:16:38'),
-(41, 28, 'Algebra', '2019-05-04 10:16:56', '2019-05-04 10:16:56'),
-(42, 28, 'Mathematics', '2019-05-04 10:17:08', '2019-05-04 10:17:08'),
-(43, 28, 'Physics', '2019-05-04 10:17:19', '2019-05-04 10:17:19');
+(39, 29, 'HTML', '2019-05-03 08:27:56', '2019-05-03 08:27:56'),
+(43, 29, 'Go Lang', '2019-05-03 08:28:57', '2019-05-03 08:28:57'),
+(44, 29, 'CSS', '2019-05-03 10:36:18', '2019-05-03 10:36:18'),
+(45, 29, 'Skill Test', '2019-05-03 11:21:10', '2019-05-03 11:21:10'),
+(46, 29, 'Rtest', '2019-05-03 11:21:39', '2019-05-03 11:21:39'),
+(47, 29, 'test1', '2019-05-03 11:21:56', '2019-05-03 11:21:56'),
+(48, 29, 'Test2', '2019-05-03 11:22:13', '2019-05-03 11:22:13'),
+(49, 29, 'test3', '2019-05-03 11:22:28', '2019-05-03 11:22:28');
 
 -- --------------------------------------------------------
 
@@ -49556,8 +49585,8 @@ CREATE TABLE `Leaves` (
   `LeaveType` varchar(50) DEFAULT NULL,
   `NoOfDays` int(11) DEFAULT NULL,
   `paidunpaidflag` int(11) NOT NULL DEFAULT '0',
-  `FromDate` varchar(30) DEFAULT NULL,
-  `UptoDate` varchar(30) DEFAULT NULL,
+  `FromDate` date DEFAULT NULL,
+  `UptoDate` date DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -49582,7 +49611,7 @@ INSERT INTO `Leaves` (`LeaveId`, `UserId`, `LeaveType`, `NoOfDays`, `paidunpaidf
 
 CREATE TABLE `SalaryHeads` (
   `SalaryHeadId` int(11) NOT NULL,
-  `UserId` int(11) NOT NULL,
+  `UserId` int(11) DEFAULT NULL,
   `HeadName` varchar(50) DEFAULT NULL,
   `CredDebit` enum('C','D') DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -49594,30 +49623,19 @@ CREATE TABLE `SalaryHeads` (
 --
 
 INSERT INTO `SalaryHeads` (`SalaryHeadId`, `UserId`, `HeadName`, `CredDebit`, `created_at`, `updated_at`) VALUES
-(8, 1, 'Basic Salary', 'C', '2019-01-17 07:31:47', '2019-03-14 05:38:53'),
-(9, 1, 'Dearness allowance', 'C', '2019-01-17 07:32:00', '2019-03-14 05:39:28'),
-(10, 1, 'PFF', 'C', '2019-01-27 09:04:37', '2019-01-27 09:06:34'),
-(11, 1, 'PF', 'D', '2019-01-27 09:04:59', '2019-01-27 09:06:44'),
-(12, 1, 'Mutual Fund', 'D', '2019-02-20 07:42:45', '2019-02-20 07:42:45'),
-(13, 1, 'DRA', 'D', '2019-02-20 07:43:06', '2019-02-20 07:43:06'),
-(14, 1, 'HRA', 'C', '2019-03-14 05:39:54', '2019-03-14 05:39:54'),
-(15, 1, 'TDS', 'D', '2019-03-14 05:40:15', '2019-03-14 05:40:15'),
-(16, 1, 'Professional Tax', 'D', '2019-03-14 05:40:38', '2019-03-14 05:40:38'),
-(17, 1, 'Washing allowance', 'C', '2019-03-14 05:40:54', '2019-03-14 05:40:54'),
-(18, 1, 'Assistant allowance', 'C', '2019-03-14 05:41:08', '2019-03-14 05:41:08'),
-(19, 1, 'Tiffin allowance', 'C', '2019-03-14 05:41:30', '2019-03-14 05:41:30'),
-(20, 20, 'Basic Salary', 'C', '2019-03-14 07:33:29', '2019-03-14 07:33:29'),
-(21, 20, 'Dearness allowance', 'C', '2019-03-14 07:33:39', '2019-03-14 07:33:39'),
-(22, 20, 'HRA', 'C', '2019-03-14 07:33:50', '2019-03-14 07:33:50'),
-(23, 20, 'Tiffin allowance', 'C', '2019-03-14 07:34:04', '2019-03-14 07:34:04'),
-(24, 20, 'City compensatory allowance', 'C', '2019-03-14 07:34:14', '2019-03-14 07:34:14'),
-(25, 20, 'Assistant allowance', 'C', '2019-03-14 07:34:23', '2019-03-14 07:34:23'),
-(26, 20, 'Washing allowance', 'C', '2019-03-14 07:34:37', '2019-03-14 07:34:37'),
-(27, 20, 'PF deducted', 'D', '2019-03-14 07:34:48', '2019-03-14 07:34:48'),
-(28, 20, 'TDS', 'D', '2019-03-14 07:34:57', '2019-03-14 07:34:57'),
-(29, 20, 'Professional tax', 'D', '2019-03-14 07:35:12', '2019-03-14 07:35:12'),
-(30, 20, 'Medical allowance', 'C', '2019-03-14 07:35:35', '2019-03-14 07:35:35'),
-(31, 20, 'CTC', 'C', '2019-05-07 07:05:19', '2019-05-07 07:05:19');
+(1, 20, 'medical allownces', 'C', '2019-05-15 06:29:29', '2019-05-15 06:29:29'),
+(2, NULL, 'Basic Salary', 'C', '2019-05-15 06:30:32', '2019-05-15 06:30:32'),
+(3, NULL, 'CTC(Cost to company)', 'C', '2019-05-15 06:36:15', '2019-05-15 06:36:15'),
+(4, NULL, 'PF', 'C', '2019-05-15 06:36:15', '2019-05-15 06:36:15'),
+(5, NULL, 'Gratuity', 'C', '2019-05-15 06:36:15', '2019-05-15 06:36:15'),
+(6, NULL, 'Other Allowances', 'C', '2019-05-15 06:36:15', '2019-05-15 06:36:15'),
+(7, NULL, 'HRA(House Rent Allowance)', 'C', '2019-05-15 06:36:15', '2019-05-15 06:36:15'),
+(8, NULL, 'Conveyance Allowance', 'C', '2019-05-15 06:36:15', '2019-05-15 06:36:15'),
+(9, NULL, 'Leave Travel Allowance (LTA)', 'C', '2019-05-15 06:36:15', '2019-05-15 06:36:15'),
+(10, NULL, 'Dearness Allowance', 'C', '2019-05-15 06:36:15', '2019-05-15 06:36:15'),
+(11, NULL, 'EPF(Employer Provident fund)/Provident Fund', 'C', '2019-05-15 06:36:15', '2019-05-15 06:36:15'),
+(12, NULL, 'Public provident fund/PPF', 'C', '2019-05-15 06:36:15', '2019-05-15 06:36:15'),
+(13, NULL, 'Professional tax', 'C', '2019-05-15 06:36:15', '2019-05-15 06:36:15');
 
 -- --------------------------------------------------------
 
@@ -53780,9 +53798,7 @@ CREATE TABLE `TaxMaster` (
 INSERT INTO `TaxMaster` (`t_id`, `UserId`, `taxname`, `taxvalue`, `created_at`, `updated_at`) VALUES
 (1, 20, 'Medicare tax', '0.6', '2019-04-11 10:05:26', '2019-04-11 10:05:26'),
 (2, 20, 'Security Tax', '2', '2019-04-11 11:16:40', '2019-04-11 11:16:40'),
-(4, 20, 'PF', '12', '2019-04-13 09:25:57', '2019-04-13 09:25:57'),
-(5, 21, 'gst', '10', '2019-05-08 09:12:04', '2019-05-08 09:12:04'),
-(6, 21, 'kk', '5', '2019-05-08 09:13:24', '2019-05-08 09:13:24');
+(4, 20, 'PF', '12', '2019-04-13 09:25:57', '2019-04-13 09:25:57');
 
 -- --------------------------------------------------------
 
@@ -53810,8 +53826,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`userId`, `fname`, `lname`, `email`, `contactNumber`, `firm`, `upassword`, `ProfilePic`, `logoImage`, `created_at`, `updated_at`) VALUES
 (1, 'Shivaji', 'Jadhav', 'xxovek@gmail.com', '9657613754', 'Xxovek Web Solutions', '123456', '1Admin.jpg', '1Logo.png', '2018-12-08 05:22:05', '2019-03-13 08:46:54'),
-(20, 'Mohit', 'Raina', 'mohit@gmail.com', '8623064696', 'SUNLINE Systems Pvt. Lmt.', '123456', '20Admin.jpg', '20Logo.png', '2019-03-14 06:20:43', '2019-03-15 11:22:38'),
-(21, 'kunal ', 'kapse', 'krkunal29@gmail.com', '9766695099', 'KK IT PVT LTD', '7620722889', '21Admin.jpeg', 'defaultlogo.png', '2019-05-08 07:27:54', '2019-05-08 09:11:22');
+(20, 'Mohit', 'Raina', 'mohit@gmail.com', '8623064696', 'SUNLINE Systems Pvt. Lmt.', '123456', '20Admin.jpg', '20Logo.png', '2019-03-14 06:20:43', '2019-03-15 11:22:38');
 
 -- --------------------------------------------------------
 
@@ -53844,11 +53859,7 @@ INSERT INTO `weekDaysOff` (`id`, `UserId`, `day`, `weeknumber`, `created_at`, `u
 (34, 20, 'Sunday', 3, '2019-03-14 12:22:00', '2019-03-14 12:22:00'),
 (35, 20, 'Sunday', 4, '2019-03-14 12:22:04', '2019-03-14 12:22:04'),
 (36, 20, 'Saturday', 4, '2019-03-14 12:22:25', '2019-03-14 12:22:25'),
-(37, 20, 'Saturday', 2, '2019-03-14 12:22:27', '2019-03-14 12:22:27'),
-(38, 21, 'Sunday', 1, '2019-05-08 14:35:02', '2019-05-08 14:35:02'),
-(39, 21, 'Tuesday', 1, '2019-05-08 14:35:06', '2019-05-08 14:35:06'),
-(40, 21, 'Tuesday', 3, '2019-05-08 14:35:10', '2019-05-08 14:35:10'),
-(41, 21, 'Monday', 3, '2019-05-08 14:41:33', '2019-05-08 14:41:33');
+(37, 20, 'Saturday', 2, '2019-03-14 12:22:27', '2019-03-14 12:22:27');
 
 --
 -- Indexes for dumped tables
@@ -53872,14 +53883,6 @@ ALTER TABLE `cities`
 ALTER TABLE `CompanyDetails`
   ADD PRIMARY KEY (`c_id`),
   ADD KEY `CompanyDetails_ibfk_1` (`userId`);
-
---
--- Indexes for table `ConfigSettings`
---
-ALTER TABLE `ConfigSettings`
-  ADD PRIMARY KEY (`id`) USING BTREE,
-  ADD KEY `CompanyDetails_ibfk_1` (`UserId`),
-  ADD KEY `SalaryHeadId` (`SalComponentId`);
 
 --
 -- Indexes for table `countries`
@@ -54069,13 +54072,7 @@ ALTER TABLE `cities`
 -- AUTO_INCREMENT for table `CompanyDetails`
 --
 ALTER TABLE `CompanyDetails`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `ConfigSettings`
---
-ALTER TABLE `ConfigSettings`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `countries`
@@ -54099,25 +54096,25 @@ ALTER TABLE `Designations`
 -- AUTO_INCREMENT for table `EmployeeAttendance`
 --
 ALTER TABLE `EmployeeAttendance`
-  MODIFY `EmpAtteId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `EmpAtteId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `EmployeeBankDetails`
 --
 ALTER TABLE `EmployeeBankDetails`
-  MODIFY `BankDetailsId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `BankDetailsId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `EmployeeDepartments`
 --
 ALTER TABLE `EmployeeDepartments`
-  MODIFY `EmpDeptId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `EmpDeptId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `EmployeeDesignations`
 --
 ALTER TABLE `EmployeeDesignations`
-  MODIFY `EmpDesigId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `EmpDesigId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `EmployeeEducationDetails`
@@ -54141,7 +54138,7 @@ ALTER TABLE `EmployeeLeaveAdditional`
 -- AUTO_INCREMENT for table `EmployeeLeaves`
 --
 ALTER TABLE `EmployeeLeaves`
-  MODIFY `EmpLeaveId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `EmpLeaveId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `EmployeePFDetails`
@@ -54153,25 +54150,25 @@ ALTER TABLE `EmployeePFDetails`
 -- AUTO_INCREMENT for table `Employees`
 --
 ALTER TABLE `Employees`
-  MODIFY `EmpId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `EmpId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `EmployeeSalaryPayslip`
 --
 ALTER TABLE `EmployeeSalaryPayslip`
-  MODIFY `PayslipId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1165;
+  MODIFY `PayslipId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1251;
 
 --
 -- AUTO_INCREMENT for table `EmployeeSalaryStructure`
 --
 ALTER TABLE `EmployeeSalaryStructure`
-  MODIFY `EmpSalStrucId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
+  MODIFY `EmpSalStrucId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
 -- AUTO_INCREMENT for table `EmployeeSkillsDetails`
 --
 ALTER TABLE `EmployeeSkillsDetails`
-  MODIFY `SkillId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `SkillId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `Holidays`
@@ -54189,7 +54186,7 @@ ALTER TABLE `Leaves`
 -- AUTO_INCREMENT for table `SalaryHeads`
 --
 ALTER TABLE `SalaryHeads`
-  MODIFY `SalaryHeadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `SalaryHeadId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `states`
@@ -54201,19 +54198,19 @@ ALTER TABLE `states`
 -- AUTO_INCREMENT for table `TaxMaster`
 --
 ALTER TABLE `TaxMaster`
-  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `weekDaysOff`
 --
 ALTER TABLE `weekDaysOff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- Constraints for dumped tables

@@ -9,14 +9,13 @@
 // $("#options").select2();
 
 $('#InTime').timepicker({
-  showInputs: false,
-  dateFormat: "mm/dd/yy"
+  showInputs: false
+  // dateFormat: "mm/dd/yy"
 })
 $('#OutTime').timepicker({
-  showInputs: false,
-  dateFormat: "mm/dd/yy"
+  showInputs: false
+  // dateFormat: "mm/dd/yy"
 });
-
 
 function timeSummation(id1, id2) {
   var t1 = document.getElementById(id1).value;
@@ -52,7 +51,6 @@ function timeSummation(id1, id2) {
 //   alert(retVal);
 //   return retVal;
 // }
-
 // $(function () {
   $("#startdatepicker").daterangepicker({
     dateFormat: "dd/mm/yyyy"

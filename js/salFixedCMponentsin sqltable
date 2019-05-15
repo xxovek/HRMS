@@ -1,0 +1,43 @@
+Basic Salary
+Professional Tax
+CTC(Cost to company)
+Gross Salary
+PF
+Gratuity
+Other Allowances
+HRA(House Rent Allowance)
+Conveyance Allowance
+Leave Travel Allowance (LTA)
+Dearness Allowance
+EPF(Employer Provident fund)/Provident Fund
+Public provident fund/PPF
+Professional tax
+
+
+
+CTC = Gross Salary + PF + Gratuity
+
+ 
+Gross Salary = Basic Salary + HRA + Other Allowances
+
+Net Salary = Basic Salary + HRA + Allowances - Income Tax - Employer's Provident Fund - Professional Tax
+
+Provident fund contribution is mandatorily either of the following:
+Case 1: Basic salary < 15000 (per month)
+12% of the basic salary
+
+Case2: Basic salary > 15000 (per month)
+In this case the company has an option to either contribute 12% of 15,000 (i.e. 1800) or 12% of Basic salary.
+
+Gross Salary = CTC – (EPF + Gratuity)
+
+Taxable Income = Income (Gross Salary + other income) – Deductions
+
+INSERT INTO `SalaryHeads`(`HeadName`, `CredDebit`) 
+VALUES ('CTC(Cost to company)','C'),('PF','C'),
+('Gratuity','C'),('Other Allowances','C'),('HRA(House Rent Allowance)','C')
+('Conveyance Allowance','C'),('Leave Travel Allowance (LTA)','C'),
+('Dearness Allowance','C'),
+('EPF(Employer Provident fund)/Provident Fund','C'),
+('Public provident fund/PPF','C'),('Professional tax','C'),
+;

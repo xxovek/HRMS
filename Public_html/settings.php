@@ -598,7 +598,7 @@ transition: .3s ease all;
                               <div class="col-sm-5">
                              <div class="bootstrap-timepicker">
                               <div class="input-group">
-                                <input type="text"  class="form-control timepicker" onblur="document.getElementById('workHours').value = timeSummation('InTime','OutTime')" name="OutTime" id="OutTime"   autocomplete="off" required>
+                                <input type="text"  class="form-control timepicker" onchange="document.getElementById('workHours').value = timeSummation('InTime','OutTime')" name="OutTime" id="OutTime"   autocomplete="off" required>
                                 <div class="input-group-addon">
                                   <i class="fa fa-clock-o"></i>
                                 </div>
@@ -626,7 +626,7 @@ transition: .3s ease all;
                           <div class="form-group">
                             <label for="taxName" class="col-sm-3 control-label">Total Working Hours in a day:<font color="red">*</font></label>
                             <div class="col-sm-5">
-                            <input type="text" readonly class="form-control"  name="workHours" id="workHours"  placeholder="Each day Working Hours" autocomplete="off" required>
+                            <input type="text" readonly class="form-control"  name="workHours" id="workHours" placeholder="Each day Working Hours" autocomplete="off" required>
 
                             </div>
                           </div>
@@ -651,7 +651,6 @@ transition: .3s ease all;
                       <button type="submit" class="btn btn-success">Save</button>
                     </div>
                   </div>
-
 
                     </form>
                   </div>
