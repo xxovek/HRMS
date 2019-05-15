@@ -7,7 +7,7 @@ $aid = $_SESSION['a_id'];
 <?php
 $response = [];
 
-if($result = mysqli_query($con,"SELECT DISTINCT SalaryHeadId,HeadName FROM SalaryHeads WHERE UserId='$aid'"))
+if($result = mysqli_query($con,"SELECT DISTINCT SalaryHeadId,HeadName FROM SalaryHeads WHERE UserId IS NULL OR UserId='$aid'"))
 {
  if(mysqli_num_rows($result)>0)
  {

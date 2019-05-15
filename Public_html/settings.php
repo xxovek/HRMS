@@ -531,7 +531,7 @@ transition: .3s ease all;
                             <label for="taxVal" class="col-sm-3 control-label">Tax Value:<font color="red">*</font><small>(In %)</small></label>
 
                             <div class="col-sm-5">
-                            <input type="text" class="form-control"  name="taxVal" id="taxVal" onkeypress="return isNumberKey(event);" minlength="2" maxlength="2" placeholder="Enter Tax Value in %" autocomplete="off" required>
+                            <input type="text" class="form-control"  name="taxVal" id="taxVal" onkeypress="return isNumberKey(event);" minlength="2" maxlength="3" placeholder="Enter Tax Value in %" autocomplete="off" required>
 
                             </div>
                           </div>
@@ -683,10 +683,7 @@ transition: .3s ease all;
                   </select>
                 </div>
                 </div>
-
-
-
-                          <!-- <div class="col-md-4"> -->
+                    <!-- <div class="col-md-4"> -->
             
                     <!-- </div> -->
 
@@ -773,6 +770,7 @@ transition: .3s ease all;
 
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
+
 
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>

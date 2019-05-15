@@ -171,14 +171,28 @@ if(isset($_SESSION['a_id']))
                       <!-- </div>
                     </div> -->
 
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label for="options">Components &nbsp;:<font color="red">*</font></label>
-                          <span id="CompoSel_err" ></span><br>
-                    <select class="form-control select2" id="options"  data-placeholder="Select Component" style="width: 100%;" required>
+
+                    <div class="col-md-4" id="CTCDiv">
+                    <div class="form-group">
+                      <label>Enter Annual Salary (CTC) &nbsp;:<font color="red">*</font></label>
+                      <span id="CTC_error_msg" ></span><br>
+                      <input type="text" autocomplete="off" placeholder="Enter Annual Salary Amount" class="form-control pull-right" id="CTC_input">
+                    </div>
+                </div>
+
+                        <div class="col-md-4">
+                          <div class="form-group">
+                           <label for="options">Components &nbsp;:<font color="red">*</font></label>
+                           <span id="CompoSel_err" ></span><br>
+                           <select class="form-control select2" id="options"  data-placeholder="Select Component" style="width: 100%;" required>
                           </select>
                         </div>
                     </div>
+                 
+                    
+                 
+                 
+                 
                   </div>
               </div>
 <div class="row">
@@ -187,14 +201,14 @@ if(isset($_SESSION['a_id']))
     <div class="col-md-4" id="cmDiv">
       <div class="form-group">
       <label for="cm" >Component</label><br>
-      <input type="text" class="form-control" name="" id="cm" maxlength="40"  readonly/>
+      <input type="text" class="form-control" name="" id="cm"  readonly/>
       </div>
     </div>
     <div class="col-md-4" id="cmDiv">
       <div class="form-group">
       <label for="cm" >Amount &nbsp;</label>
       <span id="FillAmt_err" ></span><br>
-      <input type="text" class="form-control" name="amt" id="amt"  onkeypress="return isNumberKey(event);" maxlength="40" />
+      <input type="text" class="form-control" name="amt" id="amt"  onkeypress="return isNumberKey(event);"  title="Percentage on CTC" minlength="2" maxlength="3" />
       </div>
     </div>
     <div class="col-md-2">

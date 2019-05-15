@@ -52,11 +52,21 @@ function storeTblValuesItem2() {
 
 function addrow2(){
   // $("#options").trigger('change').val("");
+  var CTC_Val = document.getElementById('CTC_input').value;
+
+  if (CTC_Val === "") {
+    $("#CTC_error_msg").html("<font color='red' size='2'>Please Enter CTC Amount First</font>");
+    setTimeout(function(){
+    $("#CTC_error_msg").html("");
+  },3000);
+}
+else{
+
   var Component_val = $("#cm").val();
 
   var Component_id = document.getElementById('cm').getAttribute("name");
 
-  var Amount_val = $("#amt").val();
+  var Amount_val = parseFloat(parseFloat($("#amt").val()/100) * CTC_Val);
  // alert(Component_txt);
   if(Component_val ===""){
     $('#CompoSel_err').html("<font color='red' size='2'>Please Select Component</font>");
@@ -82,7 +92,8 @@ else if (Amount_val ==="") {
     for (var i = 0; i < myTab.rows.length; i++) {
         var objCells = myTab.rows.item(i).cells;
       }
-  }
+   }
+ }
 }
 
 
