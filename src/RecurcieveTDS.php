@@ -1,6 +1,6 @@
 <?php
 $TaxArray = [];
-$TotalCTC = 500000;
+// $TotalCTC = 500000;
 function calculateTDS($Taxable){
     global $TaxArray;
     include '../config/connection.php';
@@ -26,5 +26,5 @@ function AverageTotalTDS($Tax){
     $MonthlyTds = ($TotalCTC/12)*($avgTax/100);
     return number_format($MonthlyTds,2);
 }
-echo calculateTDS($TotalCTC);
+// echo calculateTDS($TotalCTC);
 ?>

@@ -1,5 +1,6 @@
 <?php
 include '../config/connection.php';
+// include '../'
 session_start();
 if(isset($_SESSION['a_id']))
 {
@@ -198,19 +199,30 @@ if(isset($_SESSION['a_id']))
 <div class="row">
   <div class="col-md-1"></div>
   <div class="col-md-10">
+
     <div class="col-md-4" id="cmDiv">
       <div class="form-group">
       <label for="cm" >Component</label><br>
       <input type="text" class="form-control" name="" id="cm"  readonly/>
       </div>
     </div>
+
+    <div class="col-md-2" id="cmDiv">
+      <div class="form-group">
+      <label for="cm" >% On CTC &nbsp;</label>
+      <span id="FillPerc_err" ></span><br>
+      <input type="text" class="form-control" name="Percent" id="Percent"  onblur="document.getElementById('amt').value = this.value / 100 * document.getElementById('CTC_input').value"  onkeypress="return isNumberKey(event);"  title="Percentage on CTC" minlength="2" maxlength="3" required />
+      </div>
+    </div>
+
     <div class="col-md-4" id="cmDiv">
       <div class="form-group">
       <label for="cm" >Amount &nbsp;</label>
       <span id="FillAmt_err" ></span><br>
-      <input type="text" class="form-control" name="amt" id="amt"  onkeypress="return isNumberKey(event);"  title="Percentage on CTC" minlength="2" maxlength="3" />
+      <input type="text" class="form-control" name="amt" id="amt" readonly  title="Amount = (%/100)  * CTC" />
       </div>
     </div>
+
     <div class="col-md-2">
       <div class="form-group">
         <label for="cm" >Add &nbsp;</label><br>
@@ -220,38 +232,62 @@ if(isset($_SESSION['a_id']))
   </div>
 </div>
 
+
 <div class="row" >
     <div class="col-sm-1"></div>
+
       <div class="col-sm-10">
   <div class="table-responsive table-editable"  id="sampleTbl2">
-  <table class="table table-bordered" id="Tab_logic">
-    <!-- <thead>
-      <tr><th class="text-center">Components</th>
-        <th class="text-center">Amount</th>
-        <th class="text-center">Action</th>
-      </tr>
-    </thead> -->
-          <div class="scrollcell">
-              <tbody id="fetchcellvalue2">
-              </tbody>
-          </div>
-  </table>
+      <table class="table table-bordered" id="Tab_logic">
+        <!-- <thead>
+          <tr><th class="text-center">Components</th>
+            <th class="text-center">Amount</th>
+            <th class="text-center">Action</th>
+          </tr>
+        </thead> -->
+              <div class="scrollcell">
+                  <tbody id="fetchcellvalue2">
+                  </tbody>
+              </div>
+      </table>
     </div>
     </div>
-      <div class="col-sm-1">
-      </div>
+
+
+      <div class="col-sm-1"></div>
+
 </div>
+
+<!-- <div class="row">
+<div class="col-sm-1"></div>
+
+<div class="col-sm-10">
+<div class="col-md-4">
+<div class="form-group">
+      <label for="cm" >TDS &nbsp;</label>
+  <input type="text" id="tdsInput" class="form-control" readonly >
+</div>
+</div>
+
+</div>
+
+</div> -->
+
+
 <div class="row">
   <div class="col-md-1"></div>
 <div class="col-md-10">
     <div class="col-md-5"></div>
+
   <div class="col-md-4">
     <button type="submit" class="btn btn-success" id='updateList' onclick="updateTblList1(event);" style="display:none" title="Update Table Data">Update</button>
 
-    <button type="submit" class="btn btn-success" id='addList' onclick="addTblList1(event);" title="Submit Table Data">Submit</button>
+    <button type="button" class="btn btn-success" id='addList' onclick="addTblList1(event);" title="Submit Table Data">Submit</button>
     <button type="button" class="btn btn-default" onclick="window.location.reload();">Cancel</button>
   </div>
+
 </div>
+
 </div>
 </form>
 </div>

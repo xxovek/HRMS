@@ -8,7 +8,7 @@ $uptoDate = $_POST['uptoDate'];
 
 $response = [];
 
-$sql_query = "SELECT EmpId,EmployeeSalaryStructure.SalaryHeadId,SalaryHeads.CredDebit,Amount,SalaryHeads.HeadName,EmployeeSalaryStructure.fromDate,EmployeeSalaryStructure.uptoDate
+$sql_query = "SELECT EmpId,EmployeeSalaryStructure.SalaryHeadId,EmployeeSalaryStructure.ctcVal,EmployeeSalaryStructure.percentage,SalaryHeads.CredDebit,Amount,SalaryHeads.HeadName,EmployeeSalaryStructure.fromDate,EmployeeSalaryStructure.uptoDate
 FROM EmployeeSalaryStructure,SalaryHeads
 WHERE EmpId = '$emp_id'
 AND fromDate = '$fromDate'
@@ -21,13 +21,16 @@ if(mysqli_num_rows($result) > 0)
 {
  while($row = mysqli_fetch_array($result)){
    array_push($response,[
-     'Empid'    => $row['EmpId'],
-     'HeadName'   => $row['HeadName'],
+     'Empid'          => $row['EmpId'],
+     'HeadName'       => $row['HeadName'],
      'SalaryHeadId'   => $row['SalaryHeadId'],
-     'CredDebitType'   => $row['CredDebit'],
-     'Amount' => $row['Amount'],
-     'formDate' => $row['fromDate'],
-     'uptoDate' => $row['uptoDate']
+     'CredDebitType'  => $row['CredDebit'],
+     'Amount'         => $row['Amount'],
+     'formDate'       => $row['fromDate'],
+     'uptoDate'       => $row['uptoDate'],
+     'ctc_value'      => $row['ctcVal'],
+     'percentageVal'  => $row['percentage']
+
    ]);
  }
 }
