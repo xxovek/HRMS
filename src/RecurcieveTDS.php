@@ -26,5 +26,5 @@ function AverageTotalTDS($Tax){
     $MonthlyTds = ($TotalCTC/12)*($avgTax/100);
     return number_format($MonthlyTds,2);
 }
-echo calculateTDS(450000);
+echo calculateTDS($TotalCTC);
 ?>
