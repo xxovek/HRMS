@@ -26,16 +26,16 @@ if(isset($_SESSION['a_id'])){
    <link rel="stylesheet" href="../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
  <!-- Bootstrap time Picker -->
  <link rel="stylesheet" href="../plugins/timepicker/bootstrap-timepicker.min.css">
- 
+
  <link rel="stylesheet" href="../bower_components/select2/dist/css/editselect2.min.css">
-  
+
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="../plugins/iCheck/all.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-  <!-- jQuery 3 -->  
+  <!-- jQuery 3 -->
   <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 
   <!-- Google Font -->
@@ -111,13 +111,13 @@ transition: .3s ease all;
               <li ><a href="#TaxSettingTab" data-toggle="tab">Tax Settings</a></li>
               <li ><a href="#TimeSettingTab" data-toggle="tab">Time Settings</a></li>
               <li ><a href="#OtherSettingTab" data-toggle="tab">Other Settings</a></li>
-
+              <li ><a href="#TdsTab" data-toggle="tab">TDS Slab Settings</a></li>
 
 
             </ul>
             <div class="tab-content">
 
-           
+
               <div class="active tab-pane" id="BasicSettingsTab">
                 <div class="row">
                   <div class="col-sm-1"></div>
@@ -250,7 +250,7 @@ transition: .3s ease all;
                 </div> -->
 
 
-                          
+
                           <div class="form-group">
                             <label for="inputContPersonName" class="col-sm-3 control-label">Contact Person:<font color="red">*</font></label>
 
@@ -295,7 +295,7 @@ transition: .3s ease all;
                             <div class="col-sm-5">
                               <!-- <select class="form-control select2" name="scountry" id="scountry" style="width:100%;padding-top:20px;" onchange="getStateemp(this.value);" required></select> -->
                               <select class="form-control select2" name="scountry" id="scountry" style="width:100%;padding-top:20px;"  required></select>
-                           
+
                             </div>
                           </div>
 
@@ -441,7 +441,7 @@ transition: .3s ease all;
 <!-- <span id=""></span> -->
 
                     </div>
-                   
+
         <div class="col-md-1"></div>
 
                   </div>
@@ -531,7 +531,7 @@ transition: .3s ease all;
                             <label for="taxVal" class="col-sm-3 control-label">Tax Value:<font color="red">*</font><small>(In %)</small></label>
 
                             <div class="col-sm-5">
-                            <input type="text" class="form-control"  name="taxVal" id="taxVal" onkeypress="return isNumberKey(event);" minlength="2" maxlength="3" placeholder="Enter Tax Value in %" autocomplete="off" required>
+                            <input type="text" class="form-control"  name="taxVal" id="taxVal" onkeypress="return isNumberKey(event);" minlength="2" maxlength="2" placeholder="Enter Tax Value in %" autocomplete="off" required>
 
                             </div>
                           </div>
@@ -546,7 +546,7 @@ transition: .3s ease all;
                           </div>
 
                           <hr>
-                
+
                           <div class="row">
                     <!-- <label for="WeekNumberInput" class="col-sm-3 control-label">Previous Set</label> -->
                     <div class="col-sm-3"></div>
@@ -598,7 +598,7 @@ transition: .3s ease all;
                               <div class="col-sm-5">
                              <div class="bootstrap-timepicker">
                               <div class="input-group">
-                                <input type="text"  class="form-control timepicker" onchange="document.getElementById('workHours').value = timeSummation('InTime','OutTime')" name="OutTime" id="OutTime"   autocomplete="off" required>
+                                <input type="text"  class="form-control timepicker" onblur="document.getElementById('workHours').value = timeSummation('InTime','OutTime')" name="OutTime" id="OutTime"   autocomplete="off" required>
                                 <div class="input-group-addon">
                                   <i class="fa fa-clock-o"></i>
                                 </div>
@@ -626,7 +626,7 @@ transition: .3s ease all;
                           <div class="form-group">
                             <label for="taxName" class="col-sm-3 control-label">Total Working Hours in a day:<font color="red">*</font></label>
                             <div class="col-sm-5">
-                            <input type="text" readonly class="form-control"  name="workHours" id="workHours" placeholder="Each day Working Hours" autocomplete="off" required>
+                            <input type="text" readonly class="form-control"  name="workHours" id="workHours"  placeholder="Each day Working Hours" autocomplete="off" required>
 
                             </div>
                           </div>
@@ -652,6 +652,7 @@ transition: .3s ease all;
                     </div>
                   </div>
 
+
                     </form>
                   </div>
                 </div>
@@ -665,7 +666,7 @@ transition: .3s ease all;
                     <span id="msgOtherInfo"></span>
                     <form class="form-horizontal"  method="post" id="OtherSettingForm" >
                     <input type="hidden" id="PFRecordId" name="PFRecordId">
-                   
+
                     <div class="form-group">
                             <label for="PFPercentVal" class="col-sm-3 control-label">PF in %:<font color="red">*</font></label>
                             <div class="col-sm-5">
@@ -683,8 +684,11 @@ transition: .3s ease all;
                   </select>
                 </div>
                 </div>
-                    <!-- <div class="col-md-4"> -->
-            
+
+
+
+                          <!-- <div class="col-md-4"> -->
+
                     <!-- </div> -->
 
                           <div class="form-group">
@@ -705,6 +709,77 @@ transition: .3s ease all;
                   </div>
                 </div>
               </div>
+              <div class="tab-pane" id="TdsTab">
+            <div class="row">
+                  <div class="col-sm-1"></div>
+                  <div class="col-sm-10">
+                    <span id="msgForTds"></span>
+                  </div>
+                </div>
+                <form class="form-horizontal"  method="post" id="TdsTaxSettingForm">
+                <input type="hidden" id="TdsId" name="TdsId">
+                <div class="form-group">
+                            <label for="taxName" class="col-sm-3 control-label">Starting Amount:<font color="red">*</font></label>
+                            <div class="col-sm-5">
+                            <input type="text" class="form-control" name="startingamount" id="startingamount" placeholder="Enter Starting Amount" minlength="4" maxlength="20"  onkeypress="return isNumberKey(event);" autocomplete="off" required>
+
+                            </div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="taxVal" class="col-sm-3 control-label">Ending Amount:<font color="red">*</font></label>
+
+                            <div class="col-sm-5">
+                            <input type="text" class="form-control"  name="endingamount" id="endingamount" onkeypress="return isNumberKey(event);" minlength="4" maxlength="20" placeholder="Enter Ending Amount" autocomplete="off" required>
+
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="taxVal" class="col-sm-3 control-label">Percentage:<font color="red">*</font><small>(In %)</small></label>
+
+                            <div class="col-sm-5">
+                            <input type="text" class="form-control"  name="tdspercentage" id="tdspercentage" onkeypress="return isNumberKey(event);" minlength="2" maxlength="2" placeholder="Enter Tax Value in %" autocomplete="off" required>
+
+                            </div>
+                          </div>
+                        <div class="form-group">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3">
+                            <button  type="button" class="btn btn-success" id="saveTBTN" onclick="SaveTdsTaxForm();" >Save</button>&nbsp;
+                            <button  type="button" class="btn btn-success" id="updateTBTN" style="display:none" onclick="SaveTdsTaxForm();" >Update</button>&nbsp;
+                            <!-- <button class="btn btn-default"  type="reset">Reset</button> -->
+                            <button class="btn btn-default"  onclick="resetTDSBTNClick();" type="button">Reset</button>
+                          </div>
+                          </div>
+
+                          <hr>
+
+                          <div class="row">
+                    <!-- <label for="WeekNumberInput" class="col-sm-3 control-label">Previous Set</label> -->
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-7">
+                      <div class="table-responsive">
+                        <div class="box-header">All TDS TAX Slab </div>
+
+                        <table id="TdsTaxListTbl" class="table table-bordered table-striped">
+                            <tr>
+                                  <th class="text-center">#</th>
+                                  <th class="text-center">Starting Amount</th>
+                                  <th class="text-center">Ending Amount</th>
+                                  <th class="text-center">Percentage <small>In %</small></th>
+                                  <th class="text-center">Created Date</th>
+                                  <th class="text-center">Action</th>
+
+                            </tr>
+                            <tbody id="TdsTaxListTblBody">
+                            </tbody>
+                        </table>
+                      </div>
+
+                    </div>
+                  </div>
+                </form>
+            </div>
             </div>
             </div>
 
@@ -715,8 +790,8 @@ transition: .3s ease all;
 
               <!-- /.tab-pane -->
             </div>
-    
-           
+
+
 
             <!-- /.tab-content -->
           </div>
@@ -763,14 +838,13 @@ transition: .3s ease all;
 <script src="../plugins/timepicker/bootstrap-timepicker.min.js"></script>
 <!-- SlimScroll -->
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    
+
 <script src="../bower_components/fastclick/lib/fastclick.js"></script>
 
 <script src="../plugins/iCheck/icheck.min.js"></script>
 
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
-
 
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
@@ -779,15 +853,15 @@ transition: .3s ease all;
 <!-- <script  src="../js/rulsetCompanyInfoForm.js"></script> -->
 <script  src="../js/AdminProfileSetting.js"></script>
 <script>
-   setSelectOptions();   
+   setSelectOptions();
    fetch_adminPersonalInfo();
    fetchWeekOffDays();
    fetchAllTaxes();
    getCountry_name();
    fetchUplodedImages();
-
+   fetchAllTDS();
 // $( document ).ready(function() {
-//    setSelectOptions();   
+//    setSelectOptions();
 // });
 
 function setSelectOptions(){
@@ -857,7 +931,7 @@ if(inputFlag === 0){
 fetchPFSettings();
 
 function fetchPFSettings(){
- 
+
  $.ajax({
   url:'../src/fetchPFSettings.php',
   type:'POST',
@@ -873,21 +947,21 @@ function fetchPFSettings(){
     }else{
       setSelectOptions();
   }
-  
+
   }
  });
 
 }
 fetchCompanyDetails();
 
-$(document).on('change','#scountry',function(){  
+$(document).on('change','#scountry',function(){
   var country_id = $(this).val();
   // alert(country_id);
 
   if(country_id != ''){
   getStateemp(country_id);
   }else{
-  
+
     $("#sstate").html('<option value="">Select State</option>');
     $("#scity").html('<option value="">Select City</option>');
   }

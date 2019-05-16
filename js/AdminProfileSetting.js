@@ -9,20 +9,21 @@
 // $("#options").select2();
 
 $('#InTime').timepicker({
-  showInputs: false
-  // dateFormat: "mm/dd/yy"
+  showInputs: false,
+  dateFormat: "mm/dd/yy"
 })
 $('#OutTime').timepicker({
-  showInputs: false
-  // dateFormat: "mm/dd/yy"
+  showInputs: false,
+  dateFormat: "mm/dd/yy"
 });
+
 
 function timeSummation(id1, id2) {
   var t1 = document.getElementById(id1).value;
   var t2 = document.getElementById(id2).value;
   var startTime = moment(t1, 'hh:mm:ss a');
   var endTime = moment(t2, 'hh:mm:ss a');
- 
+
   var totalHours = (endTime.diff(startTime, 'hours'));
   var totalMinutes = endTime.diff(startTime, 'minutes');
   var clearMinutes = totalMinutes % 60;
@@ -51,6 +52,7 @@ function timeSummation(id1, id2) {
 //   alert(retVal);
 //   return retVal;
 // }
+
 // $(function () {
   $("#startdatepicker").daterangepicker({
     dateFormat: "dd/mm/yyyy"
@@ -401,10 +403,10 @@ function fetchAllTaxes(){
     // data:$("#TaxSettingForm").serialize(),
     dataType:'json',
     success:function(response){
-    
+
       for (var i = 0; i < response.length; i++) {
         var d = new Date(response[i].createdDate);
-        var cdate = d.toDateString(); 
+        var cdate = d.toDateString();
        $("#TaxListTblBody").append('<tr><td class="text-center">'+(i + 1)+'</td><td class="text-center">'+response[i].taxname+'</td><td class="text-center">'+response[i].taxvalue+
         '</td><td class="text-center">'+cdate+'</td><td class="text-center"><div class="btn-group"><button type="button" onclick="EditTax(\''+ response[i].t_id +'\',\''+response[i].taxname+'\',\''+response[i].taxvalue+'\')" class="label label-warning pull-left"><i class="fa fa-edit"></i></button><button type="button" onclick="DeleteTax('+response[i].t_id+')" class="label label-danger pull-right"><i class="fa fa-trash"></i></button></div></td></tr>');
       }
@@ -413,8 +415,55 @@ function fetchAllTaxes(){
   });
 
 }
+function EditTds(tdsid,frombal,uptobal,percentage){
+$("#updateTBTN").show();
+$("#saveTBTN").hide();
+$("#TdsId").val(tdsid);
+$("#startingamount").val(frombal);
+$("#endingamount").val(uptobal);
+$("#tdspercentage").val(percentage);
+}
+function DeleteTds(taxid){
+  $.ajax({
+    url:'../src/DeleteTds.php',
+    type:'POST',
+    data:{taxid:taxid},
+    dataType:'json',
+    success:function(response){
+      if(response.msg){
+        fetchAllTDS();
+      }else{
+          alert("Error");
+      }
+    }
+  });
+}
+function resetTDSBTNClick(){
+  $("#TdsId").val("");
+  $("#updateTBTN").hide();
+  $("#saveTBTN").show();
+  $("#TdsTaxSettingForm")[0].reset();
+}
 
+function fetchAllTDS(){
+  $("#TdsTaxListTblBody").empty();
+  $.ajax({
+    url:'../src/fetchTds.php',
+    type:'POST',
+    // data:$("#TaxSettingForm").serialize(),
+    dataType:'json',
+    success:function(response){
 
+      for (var i = 0; i < response.length; i++) {
+        var d = new Date(response[i].createdDate);
+        var cdate = d.toDateString();
+       $("#TdsTaxListTblBody").append('<tr><td class="text-center">'+(i + 1)+'</td><td class="text-center">'+response[i].FromBal+'</td><td class="text-center">'+response[i].UptoBal+
+        '</td><td class="text-center">'+response[i].Percentage+'</td><td class="text-center">'+cdate+'</td><td class="text-center"><div class="btn-group"><button type="button" onclick="EditTds(\''+ response[i].id +'\',\''+response[i].FromBal+'\',\''+response[i].UptoBal+'\',\''+response[i].Percentage+'\')" class="label label-warning pull-left"><i class="fa fa-edit"></i></button><button type="button" onclick="DeleteTds('+response[i].id+')" class="label label-danger pull-right"><i class="fa fa-trash"></i></button></div></td></tr>');
+      }
+
+     }
+  });
+}
 
 function resetBTNClick(){
   $("#taxId").val("");
@@ -424,16 +473,12 @@ function resetBTNClick(){
 }
 
 function EditTax(taxid,tname,tval){
-  // alert(taxid);
 $("#updateBTN").show();
 $("#saveBTN").hide();
-  $("#taxId").val(taxid);
-  $("#taxName").val(tname);
-
-  $("#taxVal").val(tval);
-
+$("#taxId").val(taxid);
+$("#taxName").val(tname);
+$("#taxVal").val(tval);
 }
-
 function DeleteTax(taxid){
   $.ajax({
     url:'../src/DeleteTax.php',
@@ -444,31 +489,24 @@ function DeleteTax(taxid){
       if(response.msg){
         fetchAllTaxes();
       }else{
-alert("Error");
+          alert("Error");
       }
-
     }
   });
 }
 
 function SaveTaxForm(){
-  var inputFlag = 0;
-  var TaxVal = document.getElementById('taxVal').value;
-  var TaxNameVal = document.getElementById('taxName').value;
+  let inputFlag = 0;
+  let TaxVal = document.getElementById('taxVal').value;
+  let TaxNameVal = document.getElementById('taxName').value;
 
   if(TaxNameVal === ""){
     inputFlag = 1;
-    // document.getElementById("taxName").style.backgroundColor = "red"; 
-
-  }else if (TaxVal ==="") {
-    // document.getElementById("taxVal").style.backgroundColor = "red"; 
-
+  }else if (TaxVal === "") {
     inputFlag = 1;
   }
-  if (inputFlag != 0) {
+  if (inputFlag < 1) {
 
-  // }
-  // else{
     $.ajax({
       url:'../src/TaxSettingFormSave.php',
       type:'POST',
@@ -487,11 +525,11 @@ function SaveTaxForm(){
         }, 3000);
         resetBTNClick();
         fetchAllTaxes();
-  
+
         }else if(response.true === 'noChange'){
 
         }else if (response.update === true){
-  
+
           var msg2= "<div class='alert alert-info' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong><font color='black'>Tax Details Updated Successfully</strong></font></div>";
           $('#msgForTax').html(msg2);
           window.setTimeout(function() {
@@ -503,54 +541,68 @@ function SaveTaxForm(){
         fetchAllTaxes();
 
         }else{
-  
+
         }
 
-        // alert(response.add);
-      
-        
       }
     });
-  
+
   }else{
 
   }
-  
+
   }
 
-// $("#TaxSettingForm").on('submit',function(e){
-// e.preventDefault();
+  function SaveTdsTaxForm(){
+    // alert("ok");
+    let startingamount = $('#startingamount').val();
+    let endingamount =$('#endingamount').val();
+    let tdspercentage = $('#tdspercentage').val();
+    if(startingamount === "" ||  endingamount==="" ||  tdspercentage==="" ){
+          // alert('if');
+    }
+    else {
+      // alert('else');
+      $.ajax({
+        url:'../src/TdsTaxSettingForm.php',
+        type:'POST',
+        data:$("#TdsTaxSettingForm").serialize(),
+        dataType:'json',
+        success:function(response){
+          if(response.add === true){
 
-// $.ajax({
-//         type: "POST",
-//         url: "",
-//         data:$("TaxSettingForm").serialize(),
-//         dataType:'json',
-//         success: function(response){
-//            if(response.true === true){
-//           var msg2= "<div class='alert alert-info' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong><font color='black'>Basic Personal Details Updated Successfully</strong></font></div>";
-//           $('#msgForTax').html(msg2);
-//           window.setTimeout(function() {
-//             $(".alert").fadeTo(500, 0).slideUp(500, function(){
-//                 $(this).remove();
-//             });
-//         }, 3000);
-//         window.location.reload();
-//       }
-//       else{
-//         var msg2= "<div class='alert alert-info' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong><font color='black'>Update Failed</strong></font></div>";
-//         $('#msgForTax').html(msg2);
-//         window.setTimeout(function() {
-//           $(".alert").fadeTo(500, 0).slideUp(500, function(){
-//               $(this).remove();
-//           });
-//       }, 3000);
+            var msg2= "<div class='alert alert-info' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong><font color='black'>New TDS Added Successfully</strong></font></div>";
+            $('#msgForTds').html(msg2);
+            window.setTimeout(function() {
+              $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                  $(this).remove();
+              });
+          }, 3000);
+          resetTDSBTNClick();
+           fetchAllTDS();
 
-//       }
-//         }
-// });
+          }else if(response.true === 'noChange'){
 
-// });
+          }else if (response.update === true){
+
+            var msg2= "<div class='alert alert-info' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong><font color='black'>TDS Details Updated Successfully</strong></font></div>";
+            $('#msgForTds').html(msg2);
+            window.setTimeout(function() {
+              $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                  $(this).remove();
+              });
+          }, 3000);
+          resetTDSBTNClick();
+          fetchAllTDS();
+
+          }else{
+
+          }
+        }
+      });
+    }
+    }
+
 
    $("input[name=imgnameProfile]").change(function () {
       if (this.files && this.files[0]) {
@@ -589,10 +641,10 @@ function fetchUplodedImages(){
    //  alert(response.ProfilePic);
     $("#profileImgSpan").html("YourProfile.jpeg");
     $("#logoImageSpan").html("YourLogo.jpeg");
-   
+
        document.getElementById('profile1').innerHTML = '<img src= "../images/'+response.ProfilePic+'" class="img-responsive"  style="width:30%;height:auto;">';
-       document.getElementById('logo1').innerHTML = '<img src= "../images/'+response.logoImage+'"  class="img-responsive"  style="height:100px;width:120px;padding-bottom:10px;">';       
-   
+       document.getElementById('logo1').innerHTML = '<img src= "../images/'+response.logoImage+'"  class="img-responsive"  style="height:100px;width:120px;padding-bottom:10px;">';
+
     }
   });
 }
@@ -627,9 +679,9 @@ function fetchCompanyDetails(){
         $("#scountry").append("<option value=" + response.country + " selected=selected>"+response.country+"</option>");
         // $('#scountry').trigger('change').val(response.country);
         $("#sstate").append("<option  value='"+response.State+"' selected=selected >"+response.State+"</option>");
-        // $('#sstate').trigger('change').val(response.State);          
+        // $('#sstate').trigger('change').val(response.State);
         $("#scity").append("<option  value='"+response.City+"' selected=selected >"+response.City+"</option>");
-        // $('#scity').trigger('change').val(response.City);          
+        // $('#scity').trigger('change').val(response.City);
 
         $("#inputPincode").val(response.postalcode);
         $("#inputCompanyAddr").val(response.address);
