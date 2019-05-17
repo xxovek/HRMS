@@ -186,7 +186,7 @@ display:none
       <div class=" col-sm-4">
         <div class="form-group">
         <label for="phone">Phone :<font color="red">*</font></label>
-        <input type="text" id="phone" name="phone" title="Mobile No should start with 7,8 or 9 containing 10 digits " pattern="^[789]\d{9}$"  minlength="10" maxlength="10" class="form-control" placeholder="Enter Employee Phone"  autocomplete="off" required>
+        <input type="text" id="phone" name="phone" title="Mobile No should start with 7,8 or 9 containing 10 digits " pattern="^[789]\d{9}$"  minlength="10" maxlength="10" class="form-control" placeholder="Enter Employee Phone" onkeypress="return isNumberKey(event);"  autocomplete="off" required>
       </div>
       </div>
         </div>
@@ -1145,34 +1145,7 @@ function openPFform(empid){
 
 }
 
-function checkEmailAvailability(email){
-  if(email === ""){
 
-  }
-  else{
-    $.ajax({
-      url:'../src/check_email_availablity.php',
-      dataType:'json',
-      method:'POST',
-      data:{email:email},
-      success:function(response){
-        // CheckEmailMSG
-        if(response.status){
-          $("#CheckEmailMSG").html("E-Mail Id Already Exists");
-          window.setTimeout(function() {
-            $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove();
-            });
-        }, 500);
-          
-        }else{
-          $("#CheckEmailMSG").html("");         
-        }
-        // alert(email);
-      }
-    });
-  }
-}
 </script>
 </body>
 </html>

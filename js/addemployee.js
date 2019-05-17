@@ -7,9 +7,42 @@ fetch_designationemp();
 // fetch_educationdetails();
 // fetch_experiencedetails();
 
-function checkEmailAvailability(){
-  
+function isNumberKey(event) {
+  var charCode = (window.event) ? event.keyCode  : event.which ;
+ if (charCode > 31 && (charCode < 48|| charCode > 57) && charCode!=46 )
+ return false;
+ return true;
 }
+
+
+function checkEmailAvailability(email){
+ if(email === ""){}
+   else{
+    $.ajax({
+      url:'../src/check_email_availablity.php',
+      dataType:'json',
+      method:'POST',
+      data:{email:email},
+      success:function(response){
+        // CheckEmailMSG
+        if(response.status){
+          $("#CheckEmailMSG").html("E-Mail Id Already Exists");
+          window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove();
+            });
+        }, 500);
+          
+        }else{
+          $("#CheckEmailMSG").html("");         
+        }
+        // alert(email);
+      }
+    });
+  }
+}
+
+
 
 function ValidatePAN(){
   var panVal = $('#panNum').val();
