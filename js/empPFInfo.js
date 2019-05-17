@@ -40,7 +40,6 @@ else if (uaenum == "") {
 }
 if(checkInput === 0 ){
   $("#Error_ipEmpPFnum").html("");
-
     $("#Error_ipUAEnum").html("");
 $.ajax({
     type: "POST",

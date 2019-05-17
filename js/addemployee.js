@@ -352,12 +352,7 @@ else {
 }
 });
 
-  function isNumberKey(event) {
-     var charCode = (window.event) ? event.keyCode  : event.which ;
-    if (charCode > 31 && (charCode < 48|| charCode > 57) && charCode!=46 )
-    return false;
-    return true;
-}
+ 
 $('#updateemp1').on('click', function(){
   var empid = $("#empid").val();
   var country=  document.getElementById("scountry2").value;

@@ -33,9 +33,32 @@ function goback(){
 }
 
 
-
-
 function submitAccountInfo(empid){
+
+  var statusFlag = 0;
+
+  if((document.getElementById('EmpFullName').value) == ""){
+  var statusFlag = 1;
+   
+  }
+  else if((document.getElementById('bankName').value) == ""){
+  var statusFlag = 1;
+   
+  }else if((document.getElementById('branchName').value) == ""){
+  var statusFlag = 1;
+   
+  }
+  else if((document.getElementById('bifsc').value) == ""){
+  var statusFlag = 1;
+   
+  }
+  else if((document.getElementById('AccNumber').value) == ""){
+    var statusFlag = 1;
+  }
+
+if( statusFlag === 0){
+
+  // alert(empid);
   $.ajax({
       type: "POST",
       url: "../src/addEmpBankAccInfo.php",
@@ -74,4 +97,5 @@ function submitAccountInfo(empid){
         }
       }
     });
+  }
 }
