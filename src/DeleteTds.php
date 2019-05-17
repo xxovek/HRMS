@@ -1,6 +1,4 @@
 <?php
-
-
 require_once '../config/connection.php';
 session_start();
 $adminid = $_SESSION['a_id'];
@@ -8,7 +6,7 @@ $adminid = $_SESSION['a_id'];
 $taxid = $_POST['taxid'];
 $response = [];
 
-$delete_sql = "DELETE FROM TdsDetails WHERE id = '$taxid' AND Company_id = $adminid";
+$delete_sql = "DELETE FROM TdsDetails WHERE id = '$taxid' AND userId = $adminid";
 $result = mysqli_query($con,$delete_sql)or die(mysqli_error($con));
 
 if(mysqli_query($con,$delete_sql)or die(mysqli_error($con))){
