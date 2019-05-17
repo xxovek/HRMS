@@ -116,7 +116,7 @@ display:none
          <div class="col-sm-10"></div>
          <div class="col-sm-2">
            <button id="savebtn" type="submit" class="btn btn-success" style="float: left;" value="save" >Save</button>
-           <button id="cancelbtn" type="reset" class="btn btn-default" style="float: right;" value="cancel"
+           <button id="cancelbtn" type="reset" class="btn btn-default" style="float: right;"
             onclick="window.location.reload();">Cancel</button>
      </div>
    </div>
@@ -178,8 +178,8 @@ display:none
         <div class="col-sm-4">
             <div class="form-group">
           <label for="email">Email :<font color="red">*</font></label>
-          <span id="CheckEmailAvailability"><font color="red">Email Already Exists</font></span>
-          <input type="email" id="email" name="email" class="form-control" maxlength="255" placeholder="Enter Employee E-mail"  autocomplete="off" required>
+          <font color="red"><span id="CheckEmailMSG"></span></font>
+          <input type="email" id="email" name="email" class="form-control" maxlength="255" placeholder="Enter Employee E-mail" onblur="checkEmailAvailability(this.value)" autocomplete="off" required>
         </div>
       </div>
 
@@ -1143,6 +1143,35 @@ function openPFform(empid){
      $("#PFInfoAccFormDiv").show();
      fetch_PFDetails(empid);
 
+}
+
+function checkEmailAvailability(email){
+  if(email === ""){
+
+  }
+  else{
+    $.ajax({
+      url:'../src/check_email_availablity.php',
+      dataType:'json',
+      method:'POST',
+      data:{email:email},
+      success:function(response){
+        // CheckEmailMSG
+        if(response.status){
+          $("#CheckEmailMSG").html("E-Mail Id Already Exists");
+          window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove();
+            });
+        }, 500);
+          
+        }else{
+          $("#CheckEmailMSG").html("");         
+        }
+        // alert(email);
+      }
+    });
+  }
 }
 </script>
 </body>
