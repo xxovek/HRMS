@@ -41,10 +41,12 @@ function storeTblValuesItem2() {
     var TableData = new Array();
     $('#sampleTbl2 tr').each(function(row, tr) {
       let cmt = $(tr).find('td:eq(0)').data('id');
-      let amt = $(tr).find('td:eq(1)').data('id');
+      let amt = $(tr).find('td:eq(2)').data('id');
+      let perc = $(tr).find('td:eq(1)').data('id')
       TableData[row] = {
                      "compo": cmt,
                      "amt": amt,
+                     "perc": perc,
                  }
     });
     return TableData;
@@ -65,8 +67,15 @@ else{
   var Component_val = $("#cm").val();
 
   var Component_id = document.getElementById('cm').getAttribute("name");
-
-  var Amount_val = parseFloat(parseFloat($("#amt").val()/100) * CTC_Val);
+  var percentVal = $("#Percent").val();
+   if(percentVal === ""){
+      $('#FillPerc_err').html("<font color='red' size='2'>Please Select Component</font>");
+    setTimeout( function(){
+      $('#FillPerc_err').html("");
+    },1000);
+   }
+else{
+  var Amount_val = parseFloat(parseFloat(percentVal/100) * CTC_Val);
  // alert(Component_txt);
   if(Component_val ===""){
     $('#CompoSel_err').html("<font color='red' size='2'>Please Select Component</font>");
@@ -74,19 +83,21 @@ else{
       $('#CompoSel_err').html("");
     },3000);
   }
-else if (Amount_val ==="") {
-  $('#FillAmt_err').html("<font color='red' size='2'>Please Enter Amount</font>");
-  setTimeout( function(){
-    $('#FillAmt_err').html("");
-  },3000);
-}
+// else if (Amount_val ==="") {
+//   $('#FillAmt_err').html("<font color='red' size='2'>Please Enter Amount</font>");
+//   setTimeout( function(){
+//     $('#FillAmt_err').html("");
+//   },3000);
+// }
   else {
 
-    var markup = "<tr ><td contenteditable='false'  data-id='"+ Component_id +"'>" + Component_val + "</td><td onkeypress='return isNumberKey(event);' style='background-color:#eee;opacity:1'  data-id='"+ Amount_val +"'>" + Amount_val
+    var markup = "<tr ><td contenteditable='false'  data-id='"+ Component_id +"'>" + Component_val + "</td><td contenteditable='false' data-id='"+ percentVal +"'>"+percentVal+"</td><td onkeypress='return isNumberKey(event);' style='background-color:#eee;opacity:1'  data-id='"+ Amount_val +"'>" + Amount_val
     + "</td><td class=''><button type='button' class='btn btn-danger' id='remove' onclick='remove_item(this);'><i class='fa fa-minus'></i></button></td></tr>";
     $("#Tab_logic").append(markup);
     $("#cm").val("");
+    $("#Percent").val("");
     $("#amt").val("");
+
     var myTab = document.getElementById('Tab_logic');
     var a, sum = 0;
     for (var i = 0; i < myTab.rows.length; i++) {
@@ -95,6 +106,8 @@ else if (Amount_val ==="") {
    }
  }
 }
+}
+
 
 
 $("#options").on('change',function(){
@@ -141,6 +154,8 @@ function addTblList1(event){
   // alert("ok");
   event.preventDefault();
   var funCall = 0;
+  var ctcValue = document.getElementById('CTC_input').value;
+  
   var emp_id = document.getElementById('EmpidTxt').value;
   var DateRange = document.getElementById('startdatepicker').value;
   var S_Edate = DateRange.split('-');
@@ -174,22 +189,23 @@ else {
   $.ajax({
     url : '../src/salaryHeadTblComponentSdata.php',
     method : 'POST',
-    data: {emp_id:emp_id,TableValues:TableValues,enddate:E_Date,startdate:S_Date,funCall:funCall},
-    success:function(data){
-      // alert("done");
+    dataType:'json',
+    data: {emp_id:emp_id,ctcValue:ctcValue,TableValues:TableValues,enddate:E_Date,startdate:S_Date,funCall:funCall},
+    success:function(response){
+      alert(response.add);
       $("#EmpOptId").val("");
-     window.location.reload();
+     window.location.reload();s
     },
   })
 }
 // debugger
 }
 
-
 function updateTblList1(event){
   event.preventDefault();
   var funCall = 1;
   // alert(funCall);
+  var ctcValue = document.getElementById('CTC_input').value;
   var emp_id = document.getElementById('EmpidTxt').value;
   var DateRange = document.getElementById('startdatepicker').value;
   var S_Edate = DateRange.split('-');
@@ -199,7 +215,6 @@ function updateTblList1(event){
   var TableValues;
   TableValues = storeTblValuesItem2();
 
-
   if (emp_id === "" || emp_id === null) {
     $("#EmpId_error").html("<font color='red' size='2'>Select Employee First</font>");
     setTimeout(function(){
@@ -225,7 +240,7 @@ else {
   $.ajax({
     url : '../src/salaryHeadTblComponentSdata.php',
     method : 'POST',
-    data: {emp_id:emp_id,TableValues:TableValues,enddate:E_Date,startdate:S_Date,funCall:funCall},
+    data: {emp_id:emp_id,ctcValue:ctcValue,TableValues:TableValues,enddate:E_Date,startdate:S_Date,funCall:funCall},
     success:function(data){
       // alert("done");
       $("#EmpOptId").val("");
@@ -256,7 +271,6 @@ let response = [];
       // alert(data);
       $("#EmpInfoDiv").show();
     response = JSON.parse(data);
-
       $("#EmpidTxt").val(emp_id);
       $("#Ename").val(response['name']);
       $("#Edesi").val(response['DesigName']);
@@ -283,8 +297,7 @@ $('#nodata').hide();
 
 
 //edit_forUpdate(\''+ response[i]['Empid'] +'\',\''+response[i]['HeadName']+'\',\''+response[i]['CredDebit']+'\')
-function DiplayTblData()
-{
+function DiplayTblData(){
     var response=[];
   $.ajax({
     type:'POST',
@@ -415,8 +428,9 @@ fetchEmpDetails(emp_id);
 
 $("#startdatepicker").val(fdate+"-"+edate);
 $("#EmpidTxt").val(response[i]['Empid']);
+$("#CTC_input").val(response[i]['ctc_value']);
 
-var markup = "<tr ><td contenteditable='false'  data-id='"+ response[i]['SalaryHeadId'] +"'>" + response[i]['HeadName'] + "</td><td onkeypress='return isNumberKey(event);' style='background-color:#eee;opacity:1'  data-id='"+ response[i]['Amount'] +"'>" + response[i]['Amount']
+var markup = "<tr ><td contenteditable='false'  data-id='"+ response[i]['SalaryHeadId'] +"'>" + response[i]['HeadName'] + "</td><td contenteditable='false' data-id='"+ response[i]['percentageVal'] +"'>"+response[i]['percentageVal']+"</td><td onkeypress='return isNumberKey(event);' style='background-color:#eee;opacity:1'  data-id='"+ response[i]['Amount'] +"'>" + response[i]['Amount']
 + "</td><td class=''><button type='button' class='btn btn-danger' id='remove' onclick='remove_item(this);'><i class='fa fa-minus'></i></button></td></tr>";
 $("#Tab_logic").append(markup);
 

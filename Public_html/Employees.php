@@ -116,7 +116,7 @@ display:none
          <div class="col-sm-10"></div>
          <div class="col-sm-2">
            <button id="savebtn" type="submit" class="btn btn-success" style="float: left;" value="save" >Save</button>
-           <button id="cancelbtn" type="reset" class="btn btn-default" style="float: right;" value="cancel"
+           <button id="cancelbtn" type="reset" class="btn btn-default" style="float: right;"
             onclick="window.location.reload();">Cancel</button>
      </div>
    </div>
@@ -178,15 +178,15 @@ display:none
         <div class="col-sm-4">
             <div class="form-group">
           <label for="email">Email :<font color="red">*</font></label>
-          <span id="CheckEmailAvailability"><font color="red">Email Already Exists</font></span>
-          <input type="email" id="email" name="email" class="form-control" maxlength="255" placeholder="Enter Employee E-mail"  autocomplete="off" required>
+          <font color="red"><span id="CheckEmailMSG"></span></font>
+          <input type="email" id="email" name="email" class="form-control" maxlength="255" placeholder="Enter Employee E-mail" onblur="checkEmailAvailability(this.value)" autocomplete="off" required>
         </div>
       </div>
 
       <div class=" col-sm-4">
         <div class="form-group">
         <label for="phone">Phone :<font color="red">*</font></label>
-        <input type="text" id="phone" name="phone" title="Mobile No should start with 7,8 or 9 containing 10 digits " pattern="^[789]\d{9}$"  minlength="10" maxlength="10" class="form-control" placeholder="Enter Employee Phone"  autocomplete="off" required>
+        <input type="text" id="phone" name="phone" title="Mobile No should start with 7,8 or 9 containing 10 digits " pattern="^[789]\d{9}$"  minlength="10" maxlength="10" class="form-control" placeholder="Enter Employee Phone" onkeypress="return isNumberKey(event);"  autocomplete="off" required>
       </div>
       </div>
         </div>
@@ -1144,6 +1144,8 @@ function openPFform(empid){
      fetch_PFDetails(empid);
 
 }
+
+
 </script>
 </body>
 </html>
