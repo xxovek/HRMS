@@ -9,8 +9,9 @@ $response=[];
 $startingamount = $_POST['startingamount'];
 $endingamount  = $_POST['endingamount'];
 $tdspercentage  = $_POST['tdspercentage'];
-if(!empty($_POST['startingamount']) && !empty($_POST['endingamount']) && !empty($_POST['tdspercentage']) ){
+if(empty($_POST['TdsId'])){
     $sql_query = "INSERT INTO TdsDetails(Company_id,FromBal, UptoBal, Percentage) VALUES($UserId,'$startingamount','$endingamount','$tdspercentage')";
+
     if (mysqli_query($con,$sql_query)or die(mysqli_error($con))) {
       $response['add'] = true;
     }else {

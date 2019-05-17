@@ -1,13 +1,27 @@
-// $(document).ready(function(){
-// fetchProfile();
-// fetchSkills();
-// $("#startdatepicker").daterangepicker();
-// $('.select2').select2();
-
-// fetchCompanyDetails();
-
-// $("#options").select2();
-
+function BasicSettingsTab(){
+  fetch_adminPersonalInfo();
+}
+function CompanySettingsTab(){
+   fetchCompanyDetails();
+}
+function ProfilePicSettingsTab(){
+ fetchUplodedImages();
+}
+function HolidaySettingTab(){
+   fetchWeekOffDays();
+}
+function TaxSettingTab(){
+ fetchAllTaxes();
+}
+function TimeSettingTab(){
+   // fetchCompanyDetails();
+}
+function OtherSettingTab(){
+fetchPFSettings();
+}
+function TdsTab(){
+  fetchAllTDS();
+}
 $('#InTime').timepicker({
   showInputs: false,
   dateFormat: "mm/dd/yy"
@@ -23,72 +37,47 @@ function timeSummation(id1, id2) {
   var t2 = document.getElementById(id2).value;
   var startTime = moment(t1, 'hh:mm:ss a');
   var endTime = moment(t2, 'hh:mm:ss a');
-
   var totalHours = (endTime.diff(startTime, 'hours'));
   var totalMinutes = endTime.diff(startTime, 'minutes');
   var clearMinutes = totalMinutes % 60;
-
   if(totalHours >= 24){
     totalHours = totalHours %24;
     totalHours = totalHours < 0 ? 24 + totalHours : +totalHours;
     }
-
   return totalHours+':'+totalMinutes;
 }
 
-// Number.prototype.padDigit = function() { return (this < 10) ? '0'+this : this; }
-// function timeSummation(id1, id2) {
-//   var t1 = document.getElementById(id1).value.split(':');
-//   var t2 = document.getElementById(id2).value.split(':');
-//   var min1 = t1[1].split(' ');
-//   var min2 = t2[1].split(' ');
-//   alert(min1[0]);
-//   // var mins = Number(t1[1])+Number(t2[1]);
-//   var mins = Number(min1[0]) + Number(min2[0]);
-//   var hrs = Math.floor(parseInt(mins / 60));
-//   hrs = Number(t1[0])+Number(t2[0])+hrs;
-//   mins = mins % 60;
-//   var retVal = hrs.padDigit()+':'+mins.padDigit();
-//   alert(retVal);
-//   return retVal;
-// }
-
-// $(function () {
   $("#startdatepicker").daterangepicker({
     dateFormat: "dd/mm/yyyy"
   });
-  // datepicker({ dateFormat: "mm/dd/yy" })
 
-  // })
+  $('.pass_show').append('<span class="ptxt">Show</span>');
 
-$('.pass_show').append('<span class="ptxt">Show</span>');
-// });
+  $("#weekdaysInput").select2({
+    placeholder: "Select day",
+     allowClear: true,
+  });
+  $("#WeekNumberInput").select2({
+    placeholder: "Select Week Number",
+     allowClear: true,
+  });
 
-$("#weekdaysInput").select2({
-  placeholder: "Select day",
-   allowClear: true,
-});
-$("#WeekNumberInput").select2({
-  placeholder: "Select Week Number",
-   allowClear: true,
-});
-
-// $("#scountry").select2({
-//   placeholder: "Select Country",
-//    allowClear: true,
-// });
+  $("#scountry").select2({
+    placeholder: "Select Country",
+     allowClear: true,
+  });
 
 
 
-// $("#sstate").select2({
-//   placeholder: "Select State",
-//    allowClear: true,
-// });
+  $("#sstate").select2({
+    placeholder: "Select State",
+     allowClear: true,
+  });
 
-// $("#scity").select2({
-//   placeholder: "Select City",
-//    allowClear: true,
-// });
+  $("#scity").select2({
+    placeholder: "Select City",
+     allowClear: true,
+  });
 
 function isNumberKey(event) {
    var charCode = (window.event) ? event.keyCode  : event.which ;
@@ -97,26 +86,17 @@ function isNumberKey(event) {
   return true;
 }
 
-
-// getCountry_name();
-
-
 function getCountry_name() {
     $.ajax({
         type: "POST",
         url: "../src/get_countryNames.php",
         success: function(msg) {
           $("#scountry").html(msg);
-               // document.getElementById('scountry2').innerHTML =msg;
-
         }
     });
 }
 
-
 function getStateemp(country){
-  // alert(country);
-
   $.ajax({
       type: "POST",
       url: "../src/get_statenames.php",
@@ -125,13 +105,10 @@ function getStateemp(country){
       }),
       success: function(msg) {
         $("#sstate").html(msg);
-
-          // document.getElementById('sstate2').innerHTML =msg;
       }
-
   });
-  // debugger;
 }
+
 function getCityemp(state){
   $.ajax({
       type: "POST",
@@ -141,30 +118,11 @@ function getCityemp(state){
       }),
       success: function(msg) {
         $("#scity").html(msg);
-
-        // document.getElementById('scity2').innerHTML =msg;
-
       }
   });
 }
 
-// $("#weekOffSettingFormResetBtn").click(function(){
-//   $("#weekdaysInput").val([]);
-//   $("#WeekNumberInput").val([]);
-// });
-
-// $("#weekOffSettingFormResetBtn").click(function() {
-//     // $("#weekdaysInput").val([]);
-//     $("#weekdaysInput").trigger('change').val();
-// // "<option value=" + "" + " selected=selected>"+""+"</option>"
-//     // $("#weekdaysInput").text("Select day");
-//     // $("#WeekNumberInput").val([]);
-//     $("#WeekNumberInput").trigger('change').val();
-//     // $("#WeekNumberInput").text("Select Week Number");
-// });
-
 function resetWeekOffForm(){
-  // alert("reset");
   $("#weekdaysInput").trigger('change').val([]);
   $("#WeekNumberInput").trigger('change').val([]);
 }
@@ -173,7 +131,6 @@ function SaveWeekOffForm(){
 let inputFlag = 0;
 let dayVal = document.getElementById('weekdaysInput').value;
 let weekVal = document.getElementById('WeekNumberInput').value;
-
 if(dayVal === ""){
   inputFlag = 1;
 }else if (weekVal === "") {
@@ -186,52 +143,24 @@ if (inputFlag === 0) {
     data:$("#weekOffSettingForm").serialize(),
     dataType:'json',
     success:function(response){
-    //  alert(response.add);
-      // window.location.reload();
-      $("#weekOffSettingForm")[0].reset();
-      // $("#weekdaysInput").trigger('change').val("");
-      // $("#WeekNumberInput").trigger('change').val("");
-      // $("#weekdaysInput")[0].selectedIndex = 0;
-      // $("#WeekNumberInput")[0].selectedIndex = 0;
-      // $("#weekdaysInput").val(0);
-      // $("#WeekNumberInput").val(0);
-        fetchWeekOffDays();
-      // $("#weekdaysInput").trigger('change').val([]);
-      // $("#WeekNumberInput").trigger('change').val([]);
-      $("#weekdaysInput").html('<option value="">Select Day</option><option value="Sunday">Sunday</option><option value="Monday">Monday</option><option value="Tuesday">Tuesday</option><option value="Wednesday">Wednesday</option><option value="Thursday">Thursday</option><option value="Friday">Friday</option><option value="Saturday">Saturday</option>');
-
-
-      $("#WeekNumberInput").html('<option value="">Select Week</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>');
+    $("#weekOffSettingForm")[0].reset();
+    fetchWeekOffDays();
+    $("#weekdaysInput").html('<option value="">Select Day</option><option value="Sunday">Sunday</option><option value="Monday">Monday</option><option value="Tuesday">Tuesday</option><option value="Wednesday">Wednesday</option><option value="Thursday">Thursday</option><option value="Friday">Friday</option><option value="Saturday">Saturday</option>');
+    $("#WeekNumberInput").html('<option value="">Select Week</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>');
     }
   })
-
 }
-
 }
-
-
 
 function fetchWeekOffDays(){
-
-  // let table = document.getElementById('weekDaysTbl');
-  // let table= $("#weekDaysTbl");
-  // table.destroy();
   $("#WeekOffDaysTblBody").empty();
-
-
-  // var table= $("#weekDaysTbl").DataTable();
-  // table.destroy();
-  // $("#loadtable").empty();
-
   $.ajax({
     url:'../src/fetchWeekOffSettingFormSave.php',
     type:'POST',
-    // data:$("#weekOffSettingForm").serialize(),
     data:"",
     dataType:'json',
     success:function(response){
       let weeknumberstring = "";
-
       for (var i = 0; i < response.length; i++) {
         if (response[i].weeknumber == 1) {
           weeknumberstring = "First";
@@ -255,13 +184,11 @@ function fetchWeekOffDays(){
         $("#WeekOffDaysTblBody").append('<tr><td class="text-center">'+response[i].day+'</td><td class="text-center">'+weeknumberstring+
         '</td><td class="text-center"><div class="btn-group"><button type="button" onclick="DeleteWeekOffDay(\''+ response[i].weeknumber +'\',\''+response[i].day+'\')" class="label label-danger pull-right"><i class="fa fa-trash"></i></button></div></td></tr>');
       }
-
     }
   });
 }
 
 function DeleteWeekOffDay(weekNumber,day){
-  // alert(day);
   $.ajax({
     url:'../src/DeleteWeekOffDay.php',
     type:'POST',
@@ -277,14 +204,10 @@ function DeleteWeekOffDay(weekNumber,day){
           });
       }, 3000);
       fetchWeekOffDays();
-
-    }else{
-
     }
     }
-  })
+  });
 }
-
 
 
 function checkboxTick(){
@@ -297,14 +220,12 @@ else{
 }
 
 function CheckPass(pw){
-  // alert(pw);
   let oldPass = document.getElementById('oldPass').value;
   let password = pw.trim();
   if(password === oldPass){
       $("#cpDiv").show();
       $("#CurrentPWDiv").hide();
   }else {
-    // alert("Incorrect Password");
     $("#wrongPWMsg").html("Incorrect Password");
   }
 }
@@ -315,12 +236,6 @@ $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
   radioClass   : 'iradio_flat-green'
 });
 
-// $("#OtherSettingForm").on("submit",function(event){
-//   event.preventDefault();
-
-// });
-
-
 
 $("#CompanyInfoForm").on("submit",function(event){
   event.preventDefault();
@@ -330,7 +245,6 @@ $("#CompanyInfoForm").on("submit",function(event){
     data:$("#CompanyInfoForm").serialize(),
     dataType:'json',
     success:function(response){
-      // alert("ok");
       if(response.add === true){
 
         var msg2= "<div class='alert alert-info' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong><font color='black'>Company Details Added Successfully</strong></font></div>";
@@ -360,8 +274,6 @@ $("#CompanyInfoForm").on("submit",function(event){
 
 $("#AdminBasicInfoForm").on('submit',function(e){
   e.preventDefault();
-  // alert("ok");
-
   $.ajax({
       type: "POST",
       url: "../src/UpdateAdminBasicPersonalInfo.php",
@@ -389,7 +301,6 @@ $("#AdminBasicInfoForm").on('submit',function(e){
               $(this).remove();
           });
       }, 3000);
-
       }
 }
 });
@@ -400,21 +311,18 @@ function fetchAllTaxes(){
   $.ajax({
     url:'../src/fetchTaxes.php',
     type:'POST',
-    // data:$("#TaxSettingForm").serialize(),
     dataType:'json',
     success:function(response){
-
       for (var i = 0; i < response.length; i++) {
         var d = new Date(response[i].createdDate);
         var cdate = d.toDateString();
        $("#TaxListTblBody").append('<tr><td class="text-center">'+(i + 1)+'</td><td class="text-center">'+response[i].taxname+'</td><td class="text-center">'+response[i].taxvalue+
         '</td><td class="text-center">'+cdate+'</td><td class="text-center"><div class="btn-group"><button type="button" onclick="EditTax(\''+ response[i].t_id +'\',\''+response[i].taxname+'\',\''+response[i].taxvalue+'\')" class="label label-warning pull-left"><i class="fa fa-edit"></i></button><button type="button" onclick="DeleteTax('+response[i].t_id+')" class="label label-danger pull-right"><i class="fa fa-trash"></i></button></div></td></tr>');
       }
-
      }
   });
-
 }
+
 function EditTds(tdsid,frombal,uptobal,percentage){
 $("#updateTBTN").show();
 $("#saveTBTN").hide();
@@ -450,17 +358,14 @@ function fetchAllTDS(){
   $.ajax({
     url:'../src/fetchTds.php',
     type:'POST',
-    // data:$("#TaxSettingForm").serialize(),
     dataType:'json',
     success:function(response){
-
       for (var i = 0; i < response.length; i++) {
         var d = new Date(response[i].createdDate);
         var cdate = d.toDateString();
        $("#TdsTaxListTblBody").append('<tr><td class="text-center">'+(i + 1)+'</td><td class="text-center">'+response[i].FromBal+'</td><td class="text-center">'+response[i].UptoBal+
         '</td><td class="text-center">'+response[i].Percentage+'</td><td class="text-center">'+cdate+'</td><td class="text-center"><div class="btn-group"><button type="button" onclick="EditTds(\''+ response[i].id +'\',\''+response[i].FromBal+'\',\''+response[i].UptoBal+'\',\''+response[i].Percentage+'\')" class="label label-warning pull-left"><i class="fa fa-edit"></i></button><button type="button" onclick="DeleteTds('+response[i].id+')" class="label label-danger pull-right"><i class="fa fa-trash"></i></button></div></td></tr>');
       }
-
      }
   });
 }
@@ -554,15 +459,14 @@ function SaveTaxForm(){
   }
 
   function SaveTdsTaxForm(){
-    // alert("ok");
     let startingamount = $('#startingamount').val();
     let endingamount =$('#endingamount').val();
     let tdspercentage = $('#tdspercentage').val();
     if(startingamount === "" ||  endingamount==="" ||  tdspercentage==="" ){
-          // alert('if');
+           
     }
-    else {
-      // alert('else');
+    else
+    {
       $.ajax({
         url:'../src/TdsTaxSettingForm.php',
         type:'POST',
@@ -579,7 +483,7 @@ function SaveTaxForm(){
               });
           }, 3000);
           resetTDSBTNClick();
-           fetchAllTDS();
+          fetchAllTDS();
 
           }else if(response.true === 'noChange'){
 
@@ -656,42 +560,24 @@ function fetchCompanyDetails(){
       dataType:'json',
       success: function(response) {
         $("#inputCname").val(response.companyname);
-
         $("#Admin_CompanyName").html(response.companyname);
-        // $("#startdatepicker").daterangepicker({ dateFormat: "dd/mm/yyyy" }).val();
-
-        // $("#startdatepicker").daterangepicker({
-        //   dateFormat: "mm/dd/yy"
-        // });
         $("#startdatepicker").val(response.finaYear);
         $("#inputContPersonName").val(response.contactperson);
         $("#inputContNumber").val(response.contactnumber);
         $("#inputCompanyEmail").val(response.email);
         $("#inputCompanyFax").val(response.fax);
         $("#inputCompanyWebUrl").val(response.websiteurl);
-        // $("#scountry").val(response.country);
-        // $("#sstate").val(response.State);
-        // $("#scity").val(response.City);
-
-        // $("#scountry").val(response.country).trigger('change');
-        // $("#sstate").val(response.State).trigger('change');
-
         $("#scountry").append("<option value=" + response.country + " selected=selected>"+response.country+"</option>");
-        // $('#scountry').trigger('change').val(response.country);
         $("#sstate").append("<option  value='"+response.State+"' selected=selected >"+response.State+"</option>");
-        // $('#sstate').trigger('change').val(response.State);
         $("#scity").append("<option  value='"+response.City+"' selected=selected >"+response.City+"</option>");
-        // $('#scity').trigger('change').val(response.City);
-
         $("#inputPincode").val(response.postalcode);
         $("#inputCompanyAddr").val(response.address);
         $("#companyid").val(response.companyid);
-}
-});
+      }
+    });
 }
 
 function fetch_adminPersonalInfo(){
-  // fetch_adminPersonalInfo.php
   $.ajax({
         url:'../src/fetch_adminPersonalInfo.php',
         type:'POST',
@@ -706,8 +592,6 @@ function fetch_adminPersonalInfo(){
             $("#phone").val(response.contactNumber);
             $("#imagep").html('<img class="profile-user-img img-responsive img-circle" src="../images/'+response.ProfilePic+'" alt="User profile picture">');
             $("#empname").html(response.fname+" "+response.lname);
-
-
         }
   });
 }
@@ -750,35 +634,6 @@ e.preventDefault();
   })
 
 });
-
-
-// }
-
-// function fetchProfile() {
-//   $.ajax({
-//       type: "POST",
-//       url: "displayEmployeeProfile.php",
-//       dataType:'json',
-//       success: function(response) {
-//         $("#imagep").html('<img class="profile-user-img img-responsive img-circle" src="../images/'+response[0]['ProfilePic']+'" alt="User profile picture">');
-//         $('#empname').html(response[0]['EmpName']);
-//         $('#education').html(response[0]['education']);
-//         $('#inputName').val(response[0]['EmpName']);
-//         // $('#pwd').val(response[0]['EPassword']);
-//         $('#oldPass').val(response[0]['EPassword']);
-//
-//         $('#phone').val(response[0]['contactNumber']);
-//         $('#email').val(response[0]['EmailId']);
-//         $('#address').html(response[0]['address']);
-//         var count=response.length;
-//
-//         for (var i = 1; i < count; i++) {
-//         $("#education").append(response[i]['education']+" from "+response[i]['university']+"<br>");
-//         }
-// }
-// });
-// }
-
 
 $(document).on('click','.pass_show .ptxt', function(){
 
