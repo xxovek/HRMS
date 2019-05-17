@@ -73,7 +73,7 @@ else{
 $response['add'] = false;
 
 }
-//  mysqli_query($con,$sql_ins);
+   //mysqli_query($con,$sql_ins);
   //update
 }
 // echo $sql_ins;
