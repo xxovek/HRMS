@@ -10,7 +10,7 @@ $startingamount = $_POST['startingamount'];
 $endingamount  = $_POST['endingamount'];
 $tdspercentage  = $_POST['tdspercentage'];
 if(empty($_POST['TdsId'])){
-    $sql_query = "INSERT INTO TdsDetails(Company_id,FromBal, UptoBal, Percentage) VALUES($UserId,'$startingamount','$endingamount','$tdspercentage')";
+    $sql_query = "INSERT INTO TdsDetails(userId,FromBal, UptoBal, Percentage) VALUES($UserId,'$startingamount','$endingamount','$tdspercentage')";
 
     if (mysqli_query($con,$sql_query)or die(mysqli_error($con))) {
       $response['add'] = true;
@@ -20,7 +20,7 @@ if(empty($_POST['TdsId'])){
 }
 elseif(!empty($_POST['TdsId'])) {
      $tid = $_POST['TdsId'];
-  $update_sql = "UPDATE TdsDetails SET FromBal ='$startingamount',UptoBal = '$endingamount',Percentage='$tdspercentage' WHERE id = $tid AND Company_id = $UserId";
+  $update_sql = "UPDATE TdsDetails SET FromBal ='$startingamount',UptoBal = '$endingamount',Percentage='$tdspercentage' WHERE id = $tid AND userId = $UserId";
   if (mysqli_query($con,$update_sql)or die(mysqli_error($con))) {
     if(mysqli_affected_rows($con)>0){
       $response['update'] = true;
