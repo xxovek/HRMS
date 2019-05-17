@@ -1,15 +1,6 @@
 <?php
 session_start();
 include_once '../config/connection.php';
-
-// if(isset($_SESSION['Emp_id'])){
-//   $id= $_SESSION['Emp_id'];
-//    $sql=" SELECT joining_date FROM Employees t WHERE  `EmpId`='$id' ;";
-//    $result=mysqli_query($con,$sql);
-//   $row=mysqli_fetch_array($result);
-//   $Joinyear=date("Y",strtotime($row[0]));
-//   $Joinmonth=date("m",strtotime($row[0]));
-//
   if(isset($_SESSION['a_id'])){
       $adminid =$_SESSION['a_id'];
     $uname=$_SESSION['uname'];
@@ -20,7 +11,6 @@ include_once '../config/connection.php';
       $row=mysqli_fetch_array($result);
       $Joinyear=date("Y",strtotime($row[0]));
       $Joinmonth=date("m",strtotime($row[0]));
-
    ?>
 
 
