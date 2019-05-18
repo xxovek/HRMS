@@ -195,7 +195,7 @@ else {
     success:function(response){
       alert(response.add);
       $("#EmpOptId").val("");
-    //  window.location.reload();
+     window.location.reload();
     },
   })
 }
@@ -246,7 +246,7 @@ else {
       // alert("done");
       $("#EmpOptId").val("");
       $("#submitformdata").trigger("reset");
-    //  window.location.reload();
+     window.location.reload();
     },
   })
 }
