@@ -21,4 +21,4 @@ if($result = mysqli_query($con,$sql)){
 }
 mysqli_close($con);
 exit(json_encode($response));
-  ?>
+?>
