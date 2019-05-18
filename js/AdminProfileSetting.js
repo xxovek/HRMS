@@ -59,7 +59,7 @@ function SaveWorkHours(){
 //  if(document.getElementById('workHours').value > 0){
 //    $.ajax({
 //     url:'',
-
+        // data:start time,endtime,total hours
 //    });
 //  }
 }
