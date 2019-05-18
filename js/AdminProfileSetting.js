@@ -84,8 +84,6 @@ function SaveWorkHours(){
      allowClear: true,
   });
 
-
-
   $("#sstate").select2({
     placeholder: "Select State",
      allowClear: true,
