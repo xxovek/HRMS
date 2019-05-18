@@ -5,7 +5,6 @@ session_start();
 $aid = $_SESSION['a_id'];
 $sql = "SELECT SalaryHeadId,HeadName,CredDebit,created_at FROM SalaryHeads WHERE UserId ='$aid' OR UserId IS NULL";
 
-// 'SELECT `SalaryHeadId`, `UserId`, `HeadName`, `CredDebit`, `created_at`, `updated_at` FROM `SalaryHeads` WHERE 1'
 $response = [];
 if($result = mysqli_query($con,$sql)){
   if(mysqli_num_rows($result)>0){

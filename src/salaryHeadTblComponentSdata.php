@@ -14,7 +14,7 @@ $ctcVal = $_POST['ctcValue'];
 $TotalCTC = $ctcVal;
 $avgTax = 0;
 $totalTDS = calculateTDS($ctcVal);
-echo $totalTDS;
+// echo $totalTDS;
 $itrator = new ArrayIterator($tblDataArr);
 
 if($funCall === '0'){
