@@ -44,7 +44,24 @@ function timeSummation(id1, id2) {
     totalHours = totalHours %24;
     totalHours = totalHours < 0 ? 24 + totalHours : +totalHours;
     }
-  return totalHours+':'+totalMinutes;
+
+    if(totalHours > 0){
+      return totalHours;
+    }
+    else{
+      totalHours = 0;
+      return totalHours;     
+    }
+}
+
+function SaveWorkHours(){
+  alert('ok');
+//  if(document.getElementById('workHours').value > 0){
+//    $.ajax({
+//     url:'',
+
+//    });
+//  }
 }
 
   $("#startdatepicker").daterangepicker({
