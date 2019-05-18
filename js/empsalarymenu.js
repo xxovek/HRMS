@@ -7,6 +7,7 @@ $("#startdatepicker").daterangepicker();
 $('.select2').select2();
 
 function setSelectOptions(){
+
   $.ajax({
     url : '../src/fetch_optValforSalHeadsSelect.php',
     method : 'POST',
@@ -194,7 +195,7 @@ else {
     success:function(response){
       alert(response.add);
       $("#EmpOptId").val("");
-     window.location.reload();s
+    //  window.location.reload();
     },
   })
 }
@@ -245,7 +246,7 @@ else {
       // alert("done");
       $("#EmpOptId").val("");
       $("#submitformdata").trigger("reset");
-     window.location.reload();
+    //  window.location.reload();
     },
   })
 }
