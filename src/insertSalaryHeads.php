@@ -13,7 +13,8 @@ if(!empty($_REQUEST['SalaryHead_id']))
   $result = mysqli_query($con,$sql_fetch);
   if(mysqli_num_rows($result)>0){
     $row = mysqli_fetch_array($result);
-    $sql_query  = "UPDATE SalaryHeads SET HeadName = '$salaryHead',CredDebit = '$type' WHERE SalaryHeadId = '$SalaryHead_id'";
+    $sql_query  = "UPDATE SalaryHeads SET HeadName = '$salaryHead',CredDebit = '$type'
+     WHERE SalaryHeadId = '$SalaryHead_id' and UserId = $aid";
     mysqli_query($con,$sql_query);
     }
   $response['true'] = true;

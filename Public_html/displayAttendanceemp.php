@@ -369,9 +369,10 @@ fetchattendence();
       cnt=count;
       // salaryDays(statusarr,cnt);
     // $('#tbldata').show();
-    var table = $("#datble").DataTable({
+    var table = $("#datble").DataTable({                          
       lengthChange: false,
       // destroy:true,
+      columnDefs: [ { orderable: false, targets: [0,1,2,3,4] } ],
       buttons: ['copy', 'excel', 'pdf','print']
     });
   // table.buttons().container()

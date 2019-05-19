@@ -410,7 +410,7 @@ $html ='<!DOCTYPE html>
 <table style="width:100%">
   <tr>
     <th colspan="4"style="text-align:center" >Net Salary Payable <small>In (Rs.)</small></th>
-    <th colspan="2" style="text-align:center">'.$totalCreditAmount.'/-</th>
+    <th colspan="2" style="text-align:center">'.$NetSalary.'/-</th>
   </tr>
   <tr>
     <td colspan="3" style="height:5%"></td><td colspan="3" style="height:5%"></td>

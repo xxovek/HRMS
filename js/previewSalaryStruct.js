@@ -130,10 +130,10 @@ function DisplayPreviewData(emp_id,fromDate,uptoDate){
                   // $("#totSalDeb").html(totDeb);
                   let TotalEarnings = parseFloat(totEarn) - parseFloat(totDeb);
 // alert(TotalEarnings);
-                  let salInWords = number2text(totEarn);
+                  let salInWords = number2text(TotalEarnings);
 // alert(salInWords);
                   $("#totSalInWords").html(salInWords);
-                  $("#totSalInDigit1").html(totEarn+"/-");
+                  $("#totSalInDigit1").html(TotalEarnings+"/-");
 
                 }
               } );

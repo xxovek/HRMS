@@ -211,7 +211,7 @@ AND LeaveStatus = 'Approved'";
   </tr>';
 
 
-  $fetch_CreditSql = "SELECT *
+  $fetch_CreditSql = "SELECT s.HeadName,s.CredDebit,ep.Amount
 FROM Employees e,EmployeeSalaryPayslip ep,SalaryHeads s
 WHERE e.EmpId = ep.EmpId
 AND ep.SalaryHeadId = s.SalaryHeadId
@@ -226,7 +226,7 @@ AND  e.EmpId= $Emp_id and s.CredDebit = 'C'";
 
   $CreditResult = mysqli_query($con, $fetch_CreditSql) or die("Error in fetching Salary components Credit Types");
   $CreditComponent = [];
-  $totalCreditAmount = 0;
+  $totalCreditAmount = 0.0;
   if (mysqli_num_rows($CreditResult) > 0) {
 
     while ($row = mysqli_fetch_array($CreditResult)) {
@@ -240,7 +240,7 @@ AND  e.EmpId= $Emp_id and s.CredDebit = 'C'";
   }
 
 
-  $fetch_DebitSql = "SELECT *
+  $fetch_DebitSql = "SELECT s.HeadName,s.CredDebit,ep.Amount
 FROM Employees e,EmployeeSalaryPayslip ep,SalaryHeads s
 WHERE e.EmpId = ep.EmpId
 AND ep.SalaryHeadId = s.SalaryHeadId
@@ -300,7 +300,7 @@ AND  e.EmpId= $Emp_id and s.CredDebit = 'D'";
 <td colspan="2"style="text-align:center">Description</td>
 <td colspan="1"style="text-align:center">Amount(Rs.)</td>
 </tr>';
-  if ($CreditComponentLen > $DebitComponentLen) {
+  if ($CreditComponentLen >= $DebitComponentLen) {
     // $tempDebLen = $DebitComponentLen;
     for ($i = 0; $i < $CreditComponentLen; $i++) {
 
@@ -337,7 +337,7 @@ AND  e.EmpId= $Emp_id and s.CredDebit = 'D'";
   }
 
   $ComponentTotal = '<td colspan="2"style="text-align:center">TOTAL</td>
-<td colspan="1"style="text-align:center">' . $totalCreditAmount . '</td>
+<td colspan="1"style="text-align:center">' . number_format($totalCreditAmount,2) . '</td>
 <td colspan="2"style="text-align:center">TOTAL</td>
 <td colspan="1"style="text-align:center">' . $totalDebitAmount . '</td>';
 }
@@ -381,7 +381,7 @@ AND  e.EmpId= $Emp_id and s.CredDebit = 'D'";
 <table style="width:100%">
   <tr>
     <th colspan="4"style="text-align:center" >Net Salary Payable <small>In (Rs.)</small></th>
-    <th colspan="2" style="text-align:center">' . $totalCreditAmount . '/-</th>
+    <th colspan="2" style="text-align:center">' . $NetSalary . '/-</th>
 
   </tr>
   <tr>

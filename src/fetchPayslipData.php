@@ -73,13 +73,14 @@ if(mysqli_num_rows($result)>0){
 
   $totDed = $totDed + $TotalTaxAmt;
   $totSalaryAmt = $totEar + $totDed;
+  $netSal = $totEar - $totDed;
 
     array_push($response,[
       'totalEar' => round($totEar,2),
       'totalDed' => round($totDed,2),
-      'totInWords' => convertToIndianCurrency($totEar),
-      'total' => round($totSalaryAmt,2)
-      // 'netSal' => round($)
+      'totInWords' => convertToIndianCurrency($totSalaryAmt),
+      'total' => round($totSalaryAmt,2),
+      'netSal' => round($netSal,2)
   ]);
 }else {
   $response['false'] = false;

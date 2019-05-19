@@ -12,9 +12,9 @@ $endDate = $_POST['enddate'];
 $funCall = $_POST['funCall'];
 $ctcVal = $_POST['ctcValue'];
 $TotalCTC = $ctcVal;
+$avgTax = 0;
 $totalTDS = calculateTDS($ctcVal);
-
-// $ctcVal = 200000;
+// echo $totalTDS;
 $itrator = new ArrayIterator($tblDataArr);
 
 if($funCall === '0'){
@@ -30,7 +30,7 @@ if($funCall === '0'){
   if( mysqli_query($con,$sql_ins)or die(mysqli_error($con))){
     
     $sql_tds_ins = "INSERT INTO EmployeeSalaryStructure(EmpId, SalaryHeadId, Amount,ctcVal,percentage,fromDate, uptoDate) 
-             VALUES('$emp_id','3','$totalTDS',$ctcVal,'0','$startDate','$endDate')";
+             VALUES('$emp_id','3','$totalTDS',$ctcVal,'$avgTax','$startDate','$endDate')";
              if( mysqli_query($con, $sql_tds_ins )or die(mysqli_error($con))){
               $response['add'] = true;
              }
@@ -59,15 +59,7 @@ else{
    $sql_ins .= $itrator->key() ? ',' : ';';
  }
  if(mysqli_query($con,$sql_ins)or die(mysqli_error($con))){
-  $sql_tds_ins = "INSERT INTO EmployeeSalaryStructure(EmpId, SalaryHeadId, Amount,ctcVal,percentage,fromDate, uptoDate) 
-  VALUES('$emp_id','3','$totalTDS',$ctcVal,'0','$startDate','$endDate')";
-  if( mysqli_query($con, $sql_tds_ins)or die(mysqli_error($con))){
    $response['add'] = true;
-  }
-  else{
-   $response['add'] = false;
- 
-   }
   }
 else{
 $response['add'] = false;
