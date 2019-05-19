@@ -4,8 +4,7 @@ $user_id = $_REQUEST['user_id'];
 ?>
  <option values=""></option>
  <?php
- $sql="SELECT states.name,states.id From states,countries where countries.id = states.country_id and
-  countries.name = '$user_id'";
+ $sql="SELECT states.name,states.id From states where country_id=101";
 
 if($result = mysqli_query($con,$sql))
 {

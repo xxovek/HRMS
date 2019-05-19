@@ -82,7 +82,7 @@ if(isset($_SESSION['a_id']))
                           <div class="col-md-2">
                             <div class="form-group">
                                 <label >Type</label>
-                                <br/> 
+                                <br/>
                                 <input type="radio" id="type1" name="type" value="1"  class="minimal" checked>Paid
                                 <input type="radio" id="type2" name="type" value="0" class="minimal">Unpaid
                             </div>
@@ -165,14 +165,14 @@ if(isset($_SESSION['a_id']))
     <!-- /.content -->
 
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
+  <!-- <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0
     </div>
     <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
     reserved.
-  </footer>
-
+  </footer> -->
+  <?php include "MainFooter.php"; ?>
   <?php include "RightSidebar.php"; ?>
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed

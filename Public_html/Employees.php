@@ -4,20 +4,6 @@ session_start();
 if(isset($_SESSION['a_id'])){
   $adminid =$_SESSION['a_id'];
   $uname=$_SESSION['uname'];
-  //
-  // $currently_selected = date('Y');
-  // // Year to start available options at
-  // $earliest_year = 1947;
-  // // Set your latest year you want in the range, in this case we use PHP to just set it to the current year.
-  // $latest_year = date('Y');
-  //
-  // print '<select>';
-  // // Loops over each int[year] from current year, back to the $earliest_year [1950]
-  // foreach ( range( $latest_year, $earliest_year ) as $i ) {
-  //   // Prints the option with the next year in range.
-  //   print '<option value="'.$i.'"'.($i === $currently_selected ? ' selected="selected"' : '').'>'.$i.'</option>';
-  // }
-  // print '</select>';
  ?>
  <!DOCTYPE html>
  <html>
@@ -29,32 +15,17 @@ if(isset($_SESSION['a_id'])){
    <!-- Bootstrap 3.3.7 -->
    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
-   <!-- Ionicons -->
    <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
-   <!-- daterange picker -->
-   <!-- <link rel="stylesheet" href="../bower_components/bootstrap-daterangepicker/daterangepicker.css"> -->
-   <!-- bootstrap datepicker -->
-   <!-- <link rel="stylesheet" href="../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"> -->
-
-   <!-- DataTables -->
    <link rel="stylesheet" href="../datatables/CSS/buttons.bootstrap4.min.css" />
    <link rel="stylesheet" href="../datatables/CSS/dataTables.bootstrap4.min.css" />
    <!-- Theme style -->
    <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
    <link rel="stylesheet" href="../js/bootstrap-fileupload/bootstrap-fileupload.min.css" />
-
-   <!-- AdminLTE Skins. Choose a skin from the css/skins
-        folder instead of downloading all of them to reduce the load. -->
    <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-   <!-- <link rel="stylesheet" href="../bower_components/select2/dist/css/editselect2.min.css"> -->
-   <!-- Select2 -->
-   <!-- <link rel="stylesheet" href="../bower_components/select2/dist/css/select2.min.css"> -->
    <link rel="stylesheet" href="../bower_components/select2/dist/css/editselect2.min.css">
-
    <!-- Google Font -->
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
    <link rel="stylesheet" href="../dist/css/edit_employee.css">
-
    <!-- jQuery 3 -->
    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
    <style>
@@ -65,18 +36,7 @@ if(isset($_SESSION['a_id'])){
            left: 50%;
            transform: translate(-50%, -50%) !important;
        }
-     /* #employeername:focus,#Noofyear:focus{
-       border-top: none !important;
-       border-left: none !important;
-       border-right: none !important;
-       border-bottom: 1px solid green !important;
-       background-color: transparent;
-       padding-left: 0;
-   } */
 
-/* #AccountForm {
-display:none
-} */
    </style>
    </head>
 
@@ -94,8 +54,7 @@ display:none
 
    <!-- Content Wrapper. Contains page content -->
    <div class="content-wrapper">
-     <!-- Content Header (Page header) -->
-     <!-- Main content -->
+
      <section class="content">
        <section class="content-header">
          <h1 >
@@ -122,7 +81,7 @@ display:none
    </div>
    </div>
 
-
+ <!-- start -->
 <div class="row" id="EmpFormRowDiv">
   <div class="col-md-1"></div>
 
@@ -289,17 +248,11 @@ display:none
             </div>
       </div>
         </div>
-
-        <!--<div class="row">-->
-        <!--  <div class="col-sm-5"></div>-->
-        <!--  <button id="new1" type="submit" class="btn btn-success" value="add" >Submit</button>&nbsp;-->
-        <!--  <button class="btn btn-default" onclick="clear_all()">Cancel</button>-->
-        <!--</div>-->
         <br>
           <div class="row">
-             
+
              <div class="col-sm-1"></div>
-            
+
              <div class="col-sm-10">
                  <div class=" col-sm-6">
                       <button id="new1" type="submit" class="btn btn-success" value="add" >Submit</button>&nbsp;
@@ -307,13 +260,14 @@ display:none
                 </div>
             </div>
         </div>
-        
+
       </form>
       </div>
     </div>
 
   </div>
 </div>
+<!-- end -->
 
 
  <div class="col-md-12">
@@ -613,7 +567,7 @@ display:none
                            </td>
 
                            <td class="editbtn"><a href="#"><i class="fa fa-pencil" aria-hidden="true" onclick="editdepartment();"></i></a></td></tr>
-                        
+
                            <tr class="blank_row"></tr>
 
                          <tr class="border_bottom"><td class="label1"> Designation</td><td > : </td><td></td>
@@ -677,7 +631,7 @@ display:none
                           onclick="window.location.reload();">Cancel</button>
                         </div>
                       </form>
-              
+
                     </div>
                    </div>
                 </div>
@@ -692,7 +646,7 @@ display:none
                 <div class="col-sm-4">
                <b>  EDUCATION DETAILS</b>
                </div>
-               
+
  <button type="button" class="btn btn-link btn-lg pull-right"  data-toggle="modal" data-target="#exampleModal" >Add New Education</button>
  <br>
  <!-- Modal -->
@@ -1044,13 +998,14 @@ display:none
 
   <!-- /.content -->
 <!-- /.content-wrapper -->
-<footer class="main-footer">
+<!-- <footer class="main-footer">
   <div class="pull-right hidden-xs">
     <b>Version</b> 2.4.0
   </div>
   <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
   reserved.
-</footer>
+</footer> -->
+  <?php include "MainFooter.php"; ?>
 <?php include "RightSidebar.php"; ?>
 
 <!-- /.control-sidebar -->
