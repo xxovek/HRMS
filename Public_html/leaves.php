@@ -169,12 +169,12 @@ if(isset($_SESSION['a_id']))
                 <!--  <button class="btn btn-default " type="reset" onclick="clear_all()">Cancel</button>-->
 
                 <!--</div>-->
-                
+
                  <br>
           <div class="row">
-             
+
              <div class="col-sm-1"></div>
-            
+
              <div class="col-sm-10">
                  <div class=" col-sm-6">
                      <button id="leaveedit" type="submit" class="btn btn-success ">Submit</button>&nbsp;
@@ -298,14 +298,14 @@ if(isset($_SESSION['a_id']))
       <!-- /.row -->
     <!-- /.content -->
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
+  <!-- <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0
     </div>
     <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
     reserved.
-  </footer>
-
+  </footer> -->
+  <?php include "MainFooter.php"; ?>
   <?php include "RightSidebar.php"; ?>
 
   <!-- /.control-sidebar -->

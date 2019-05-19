@@ -122,7 +122,7 @@ transition: .3s ease all;
         </div>
 
 
-        
+
           </div>
           <!-- /.nav-tabs-custom -->
         </div>
@@ -135,14 +135,14 @@ transition: .3s ease all;
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
+  <!-- <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0
     </div>
     <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
     reserved.
-  </footer>
-
+  </footer> -->
+  <?php include "MainFooter.php"; ?>
   <!-- Control Sidebar -->
   <?php include "RightSidebar.php"; ?>
 

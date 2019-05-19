@@ -117,8 +117,8 @@ if(isset($_SESSION['a_id']))
                     </div>
                 </div>
 
-                
-                <!-- <div class="col-md-8"> 
+
+                <!-- <div class="col-md-8">
                   <div class="form-group">
                     <label><h5>Start To End Date :<font color="red">*</font></h5></label>
                     <span id="startDate_err" ></span>
@@ -148,7 +148,7 @@ if(isset($_SESSION['a_id']))
                 </div>
                 </div>
 
-              
+
              </div>
            </div>
 
@@ -199,7 +199,7 @@ if(isset($_SESSION['a_id']))
                         <h3 class="box-title center">Salary Components and Calculations</h3>
                         <hr>
                       <!-- <div class="col-md-6"> -->
-                        
+
 
                       <!-- <div class="row">
             <div class="col-md-1"></div>
@@ -436,14 +436,14 @@ if(isset($_SESSION['a_id']))
       </section>
       </div>
 
-      <footer class="main-footer">
+      <!-- <footer class="main-footer">
         <div class="pull-right hidden-xs">
           <b>Version</b> 2.4.0
         </div>
         <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
         reserved.
-      </footer>
-
+      </footer> -->
+  <?php include "MainFooter.php"; ?>
       <?php include "RightSidebar.php"; ?>
       <div class="control-sidebar-bg"></div>
       </div>
@@ -480,7 +480,7 @@ if(isset($_SESSION['a_id']))
 
     <script src="../js/SalaryStructByDesignations.js"></script>
     <!-- empsalarymenu.js -->
-    
+
     <!-- <script src="../js/temp.js"></script> -->
     <script src="../js/previewSalaryStruct.js"></script>
 

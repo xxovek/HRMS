@@ -17,7 +17,7 @@ if(isset($_SESSION['a_id']))
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <!-- Font Awesome --> 
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
@@ -189,11 +189,11 @@ if(isset($_SESSION['a_id']))
                           </select>
                         </div>
                     </div>
-                 
-                    
-                 
-                 
-                 
+
+
+
+
+
                   </div>
               </div>
 <div class="row">
@@ -334,14 +334,14 @@ if(isset($_SESSION['a_id']))
       </section>
       </div>
 
-      <footer class="main-footer">
+      <!-- <footer class="main-footer">
         <div class="pull-right hidden-xs">
           <b>Version</b> 2.4.0
         </div>
         <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
         reserved.
-      </footer>
-
+      </footer> -->
+        <?php include "MainFooter.php"; ?>
       <?php include "RightSidebar.php"; ?>
       <div class="control-sidebar-bg"></div>
       </div>
