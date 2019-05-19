@@ -113,7 +113,7 @@ if(isset($_SESSION['Emp_id'])){
         // $("#total").html(response[count-1]['totalEar']);
          // $("#total").html(response[count-1]['total']);
          $("#total").html(response[count-1]['total']);
-         $("#netSalary").html(response[count-1]['totalEar']);
+         $("#netSalary").html(response[count-1]['netSal']);
          $("#TotalInWords").html(response[count-1]['totInWords'])
          
          $("#loadearnings").append('<tr><td>Total Earnings</td><td>'+response[count-1]['totalEar']+'</td></tr>');

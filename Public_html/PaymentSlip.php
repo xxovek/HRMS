@@ -118,7 +118,7 @@ if(isset($_SESSION['a_id']))
          $("#payid").html('PAYSLIP #'+response[0]['PayslipId']+'<br>salary Month:'+month+','+yr+'');
          $("#emp").html(response[0]['EmpName']+'<br>'+response[0]['address']+'<br>'+response[0]['country']+'<br>'+response[0]['phone']);
          $("#total").html(response[count-1]['total']);
-         $("#netSalary").html(response[count-1]['totalEar']);
+         $("#netSalary").html(response[count-1]['netSal']);
          $("#TotalInWords").html(response[count-1]['totInWords'])
          $("#loadearnings").append('<tr><td>Total Earnings</td><td>'+response[count-1]['totalEar']+'</td></tr>');
          
