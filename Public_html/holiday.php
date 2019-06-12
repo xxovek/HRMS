@@ -52,7 +52,7 @@ if(isset($_SESSION['a_id']))
                      <div class="col-md-4">
                       <div class="form-group">
                           <label >Holiday Date</label>
-                            <input type="date" min=<?php echo date("Y-m-d");?> name="date1" style="padding-top:0px"  id="date1" class="form-control" required placeholder="Select Date" autocomplete="off">
+                          <input type="date" min=<?php echo date("Y-m-d");?> name="date1" style="padding-top:0px"  id="date1" class="form-control" required placeholder="Select Date" autocomplete="off">
                     </div>
                   </div>
                   <div class="col-md-4">
