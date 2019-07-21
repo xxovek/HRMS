@@ -118,15 +118,29 @@ function remove_leavetype(param){
             $("#cancel1").show();
           }
 
+
+
+          
+
 $('#submitformdata').on('submit',function(e){
   e.preventDefault();
+
+  var formData = {
+    leavetype :$("#leavetype").val(),
+    fromdate: $('#fromdate').val(),
+    uptodate: $('#uptodate').val(),
+    numdays: $('#numdays').val(),
+    type1 : $("input[name='type']:checked").val(),
+    leave_id:$("#leave_id").val()
+};
 
     $.ajax({
       type:'POST',
       url:'../src/addLeaves.php',
-      data: $('#submitformdata').serialize(),
+      data: formData,
+
       success:function(data){
-        response=JSON.parse(data);
+        response = JSON.parse(data);
         if(response['add']){
 
         var msg2= "<div class='alert alert-info' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong><font color='black'>Leaves Type Added Successfully..!!</strong></font></div>";

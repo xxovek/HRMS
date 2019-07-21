@@ -6,8 +6,7 @@ $leavetype             = $_REQUEST['leavetype'];
 $fdate            = $_REQUEST['fromdate'];
 $udate            = $_REQUEST['uptodate'];
 $days            = $_REQUEST['numdays'];
-
-$paidUnpaidFlag  = $_REQUEST['type'];
+$paidUnpaidFlag  = $_REQUEST['type1'];
 $response        = [];
 
 if(!empty($_REQUEST['leave_id'])){
